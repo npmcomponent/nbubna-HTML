@@ -1,43 +1,50 @@
 {
-  "name": "Voyeur",
-  "private": true,
-  "version": "0.4.0",
-  "description": "Voyeur is a tiny (1.2kb) Javascript library that lets you traverse and manipulate the DOM the way it should have been.",
-  "homepage": "http://dunxrion.github.io/voyeur.js/",
-  "github": "https://github.com/dunxrion/voyeur.js",
-  "keywords": [
-    "traverse",
-    "DOM"
-  ],
+  "name": "html.js",
+  "title": "HTML",
+  "description": "A simple, extensible way to traverse and use the DOM.",
+  "version": "0.9.0",
+  "homepage": "http://nbubna.github.io/HTML/",
   "author": {
-    "name": "Adrian Cooney",
-    "email": "cooney.adrian@gmail.com"
-  },
-  "main": "Voyeur.js",
-  "filename": "Voyeur.min.js",
-  "dependencies": {},
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-bumpup": "*",
-    "grunt-release": "*"
-  },
-  "scripts": {
-    "test": "mocha"
+    "name": "ESHA Research",
+    "email": "nathan@esha.com",
+    "url": "http://www.esha.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com:dunxrion/voyeur.js.git"
+    "url": "git://github.com/nbubna/HTML.git"
   },
-  "bugs": "https://github.com/dunxrion/dunxrion/issues",
+  "bugs": {
+    "url": "https://github.com/nbubna/HTML/issues"
+  },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://raw.github.com/dunxrion/voyeur.js/master/LICENCE"
+      "url": "https://github.com/nbubna/HTML/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
-    "node": ">=0.8.0"
-  }
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt qunit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-qunit": "~0.2.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "html",
+    "voyeur",
+    "DOM",
+    "traverse",
+    "manipulate",
+    "extend",
+    "better"
+  ]
 }
