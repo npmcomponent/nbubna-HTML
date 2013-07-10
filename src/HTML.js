@@ -9,7 +9,7 @@
         version: "<%= pkg.version %>",
         slice: _.slice,
         prep: function(o) {
-            if (o.length > 1) {// nodelist
+            if (o.length !== 1) {// nodelist
                 o = _.slice.call(o);
             } else {
                 o = o[0];// node
@@ -37,37 +37,40 @@
         },
         fn: {
             each: function(fn) {
-                if (this.isNode) {
-                    fn.call(this, this, 1, true);
-                } else {
-                    var self = this;
-                    this.forEach(function(el, i) {
-                        el = _.prep(el);
-                        fn.call(self, el, i);
-                    });
-                }
+                var self = this.isNode ? [this] : this;
+                self.forEach(function(el, i, arr) {
+                    fn.call(self, _.prep(el), i, arr);
+                });
                 return this;
             },
             find: function(selector) {
-                if (this.isNode) {
-                    return _.prep(_.slice.call(this.querySelectorAll(selector)));
-                }
-                for (var i=0,m=this.length,all=[]; i<m; i++) {
-                    all = all.concat(_.slice.call(this[i].querySelectorAll(selector)));
+                var self = this.isNode ? [this] : this;
+                for (var o=[],i=0,m=self.length; i<m; i++) {
+                    o = o.concat(_.slice.call(self[i].querySelectorAll(selector)));
                 }
                 return _.prep(all);
             },
-            slice: function(begin, e) {
-                if (this.isNode) {
-                    return begin === 0 ? this : null;
-                }
-                return _.prep(this.slice(begin, end || (begin + 1)))
+            only: function(b, e) {
+                var self = this.isNode ? [this] : this,
+                return _.prep(
+                    b >= 0 || b < 0 ?
+                        self.slice(b, e || (b + 1)) :
+                        self.filter(
+                            typeof b === "function" ? b :
+                            function(el){ return el[_.matches](b); }
+                        )
+                );
             }
         }
     };
 
     var HTML = _.prep(document.documentElement);
     HTML._ = _;
+    ['m','webkitM','mozM','msM'].forEach(function(prefix) {
+        if (HTML[prefix+'atchesSelector']) {
+            _.matches = prefix+'atchesSelector';
+        }
+    });
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = HTML;
     } else {
