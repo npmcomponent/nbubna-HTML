@@ -108,7 +108,7 @@
         return _.list(list);
     };
     add.append = function(node, arg) {
-        if (typeof arg === "string") {// emmet-like code
+        if (typeof arg === "string") {
             return add.create(node, arg);
         }
         if ('length' in arg) {// array of append-ables
@@ -122,6 +122,37 @@
         node.appendChild(arg);
         return arg;
     };
+    add.create = function(node, tag) {
+        var el = document.createElement(tag);
+        node.appendChild(node);
+        return el;
+    };
+
+    _.fn.remove = function() {
+        var parents = [];
+        this.each(function(node) {
+            var parent = node.parentNode;
+            if (parents.indexOf(parent) < 0) {
+                parents.push(parent);
+            }
+            parent.removeChild(node);
+
+            var key = _.type(node),
+                val = parent[key];
+            if (val && val.isNodeList) {
+                val.splice(val.indexOf(node), 1);
+            } else {
+                delete parent[key];
+            }
+        });
+        return _.list(parents);
+    };
+
+})(document, HTML._);
+(function(document, _) {
+    "use strict";
+
+    var add = _.fn.add;
     add.create = function(node, code) {
         var parts = code.split(add.re()),
             root = document.createDocumentFragment(),
@@ -184,27 +215,3 @@
     };
 
 })(document, HTML._);
-(function(_) {
-    "use strict";
-
-    _.fn.remove = function() {
-        var parents = [];
-        this.each(function(node) {
-            var parent = node.parentNode;
-            if (parents.indexOf(parent) < 0) {
-                parents.push(parent);
-            }
-            parent.removeChild(node);
-
-            var key = _.type(node),
-                val = parent[key];
-            if (val && val.isNodeList) {
-                val.splice(val.indexOf(node), 1);
-            } else {
-                delete parent[key];
-            }
-        });
-        return _.list(parents);
-    };
-
-})(HTML._);

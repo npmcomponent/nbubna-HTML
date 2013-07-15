@@ -1,31 +1,7 @@
-/*! HTML - v0.9.0 - 2013-07-15
-* http://nbubna.github.io/HTML/
-* Copyright (c) 2013 ESHA Research; Licensed MIT, GPL */
 (function(document, _) {
     "use strict";
 
-    var add = _.fn.add = function(arg) {
-        var list = [];
-        this.each(function(node) {
-            list = list.concat(add.append(node, arg));
-        });
-        return _.list(list);
-    };
-    add.append = function(node, arg) {
-        if (typeof arg === "string") {// emmet-like code
-            return add.create(node, arg);
-        }
-        if ('length' in arg) {// array of append-ables
-            var ret = [];
-            for (var i=0,m=arg.length; i<m; i++) {
-                ret.push(add.append(node, arg[i]));
-            }
-            return ret;
-        }
-        // ok, assume they know what they're doing
-        node.appendChild(arg);
-        return arg;
-    };
+    var add = _.fn.add;
     add.create = function(node, code) {
         var parts = code.split(add.re()),
             root = document.createDocumentFragment(),

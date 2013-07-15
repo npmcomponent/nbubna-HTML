@@ -20,6 +20,28 @@
       throws(block, [expected], [message])
   */
 
+	module("HTML element creation");
+
+	test("basic", function() {
+		ok(!HTML.body.a, "no A to begin with");
+		equal(HTML.body.add('a').tagName, "A", "Tag created.");
+		ok(HTML.body.a, 'Tag found.');
+		HTML.body.a.remove();
+	});
+
+	test("add node", function() {
+		var node = document.createElement('article');
+		equal(HTML.body.add(node), node, "added node and got it back");
+		ok(HTML.body.article && 'isNode' in node, 'added node has been assimilated');
+		node.remove();
+	});
+
+	test("add list", function() {
+		var list = ['nav', document.createElement('nav'), ['nav']];
+		equal(HTML.body.add(list).length, 3, 'added three nav elements');
+		HTML.find('nav').remove();
+	});
+
   module("HTML element removal");
 
   test("single", 4, function() {
@@ -41,4 +63,3 @@
   });
 
 }(HTML));
-

@@ -22,13 +22,6 @@
 
 	module("HTML element creation");
 
-	test("basic", function() {
-		ok(!HTML.body.a, "no A to begin with");
-		equal(HTML.body.add('a').tagName, "A", "Tag created.");
-		ok(HTML.body.a, 'Tag found.');
-		HTML.body.a.remove();
-	});
-
 	test("nested", function() {
 		var nested = HTML.body.add('div>div');
 		equal(nested.tagName, "DIV", "Tags created.");
@@ -94,19 +87,6 @@
 		equal(mixed.textContent, 'a b', 'both text parts');
 		ok(mixed.span, 'and child node');
 		mixed.remove();
-	});
-
-	test("add node", function() {
-		var node = document.createElement('article');
-		equal(HTML.body.add(node), node, "added node and got it back");
-		ok(HTML.body.article && 'isNode' in node, 'added node has been assimilated');
-		node.remove();
-	});
-
-	test("add list", function() {
-		var list = ['nav', document.createElement('nav'), ['nav']];
-		equal(HTML.body.add(list).length, 3, 'added three nav elements');
-		HTML.find('nav').remove();
 	});
 
 }(HTML));
