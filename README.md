@@ -7,12 +7,12 @@ Thanks to Adrian Cooney for the inspiration and [starting point][voyeur] for thi
 
 ## Getting Started
 
-Download: [HTML.min.js][all]  or  [HTML.js][core]  
+Download: [HTML.min.js][prod]  or  [HTML.js][dev]  
 [Bower][bower]: `bower install HTML`  
 [NPM][npm]: `npm install html.js`   
 
-[all]: https://raw.github.com/nbubna/HTML/master/dist/HTML.min.js
-[core]: https://raw.github.com/nbubna/HTML/master/src/HTML.js
+[prod]: https://raw.github.com/nbubna/HTML/master/dist/HTML.min.js
+[dev]: https://raw.github.com/nbubna/HTML/master/dist/HTML.all.js
 [npm]: https://npmjs.org/package/html.js
 [bower]: http://bower.io/
 
@@ -41,19 +41,19 @@ Download: [HTML.min.js][all]  or  [HTML.js][core]
 var url = HTML.body.div.header.h1.a.href;
 
 // easy, contextual search
-HTML.body.find("#title a").innerText = "New title!";
+HTML.body.find("#title a").textContent = "New title!";
 
 // an each() function to use the selected node or nodes
 HTML.body.section.ul.li.each(function(li, i) {
-    li.a.innerText = "Link #" + i;
+    li.a.textContent = "Link #" + i;
 });
 
 // an only() function to narrow your selection
 var list = HTML.find('li');
-list.only(4).classList.add('highlighted');                // by index
-list.only(0, 4).classList.remove('highlighted');          // by slice
-list.only('.highlighted').style.fontStyle = 'italic';     // by selector
-list.only(function(l,i){return i%2;}).innerText += 'Odd'; // by function
+list.only(4).classList.add('highlighted');                  // by index
+list.only(0, 4).classList.remove('highlighted');            // by slice
+list.only('.highlighted').style.fontStyle = 'italic';       // by selector
+list.only(function(l,i){return i%2;}).textContent += 'Odd'; // by function
 ```
 
 ## Extensions
@@ -65,7 +65,7 @@ The [minified][all] version automatically includes core and the
 [add]: http://raw.github.com/nbubna/HTML/master/src/HTML.add.js
 
 ```js
-// use simple expressions to append content ([emmet][] w/o grouping or numbering)
+// use simple expressions to append content ([emmet][emmet] w/o grouping or numbering)
 var content = HTML.body.add('div>section*5>p>').each(function(p) {
     p.textContext = "Hello world!";
 });
@@ -74,6 +74,6 @@ var content = HTML.body.add('div>section*5>p>').each(function(p) {
 [emmet]: http://docs.emmet.io/abbreviations/syntax/
 
 ## Release History
-* 2013-07-12 v1.0.0 (public, initial)
+* 2013-08-01 v0.9.0 (public, initial)
 
 [v1.0.0]: https://github.com/nbubna/store/tree/1.0.0
