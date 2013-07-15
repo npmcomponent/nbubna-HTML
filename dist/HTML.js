@@ -1,8 +1,11 @@
+/*! HTML - v0.9.0 - 2013-07-15
+* http://nbubna.github.io/HTML/
+* Copyright (c) 2013 ESHA Research; Licensed MIT, GPL */
 (function(window, document) {
     "use strict";
 
     var _ = {
-        version: "<%= pkg.version %>",
+        version: "0.9.0",
         slice: Array.prototype.slice,
         list: function(list) {
             if (list.isNodeList){ return list; }

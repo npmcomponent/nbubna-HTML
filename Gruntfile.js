@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     // Metadata.
-    pkg: grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON('bower.json'),
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
@@ -18,11 +18,24 @@ module.exports = function(grunt) {
     concat: {
       options: {
         banner: '<%= banner %>',
+        process: true,
         stripBanners: true
       },
-      dist: {
+      core: {
         src: ['src/<%= pkg.name %>.js'],
         dest: 'dist/<%= pkg.name %>.js'
+      },
+      add: {
+        src: ['src/<%= pkg.name %>.add.js'],
+        dest: 'dist/<%= pkg.name %>.add.js'
+      },
+      remove: {
+        src: ['src/<%= pkg.name %>.remove.js'],
+        dest: 'dist/<%= pkg.name %>.remove.js'
+      },
+      dist: {
+        src: ['src/HTML.js','src/HTML.*.js'],
+        dest: 'dist/<%= pkg.name %>.all.js'
       },
     },
     uglify: {
@@ -30,7 +43,7 @@ module.exports = function(grunt) {
         banner: '<%= banner %>'
       },
       dist: {
-        src: '<%= concat.dist.dest %>',
+        src: 'dist/<%= pkg.name %>.all.js',
         dest: 'dist/<%= pkg.name %>.min.js'
       },
     },
@@ -82,6 +95,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'clean', 'concat', 'uglify', 'qunit']);
 
 };

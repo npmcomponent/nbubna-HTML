@@ -1,4 +1,4 @@
-(function() {
+(function(HTML) {
   /*
     ======== A Handy Little QUnit Reference ========
     http://api.qunitjs.com/
@@ -32,14 +32,14 @@
 
 	test("HTML is the root", function() {
 		strictEqual(HTML, document.documentElement, "HTML is the root document element");
-	})
+	});
 
 	module("traversal");
 
 	test("children", 2, function() {
 		ok(HTML.body, "body");
 		ok(HTML.head, "head");
-	})
+	});
 
 	test("single grandkid is HTMLElement", 2, function() {
 		ok(HTML.body.section, "got to grandkid");
@@ -52,9 +52,9 @@
 	});
 
 	test("grandkids come descending order", function() {
-		var div = HTML.section.div;
-		ok(div[0].id == "first" && div[div.length - 1].id == "last", "Order is descending");
-	})
+		var div = HTML.body.section.div;
+		ok(div[0].id === "first" && div[div.length - 1].id === "last", "Order is descending");
+	});
 
 	module("each()");
 
@@ -71,12 +71,12 @@
 		var pdiv, pi = -1,
 			self = HTML.body.section.div,
 		ret = self.each(function(div, i, arr) {
-			ok(pdiv !== div && pi+1 === i && arr, 'the usual arguments');
+			notEqual(pdiv, div, 'should have new div');
+			strictEqual(i, pi+1, 'index one less');
+			ok(arr, 'array as third arg');
 			ok(div instanceof HTMLElement, 'have an element');
-			if (pi === undefined) {
-				pi = i;
-				pdiv = div;
-			}
+			pi = i;
+			pdiv = div;
 		});
 		ok(ret === self, 'returned this');
 	});
@@ -106,42 +106,43 @@
 	test("by slice, on multiple", function() {
 		var divs = HTML.body.section.div;
 		strictEqual(divs.only(-1), divs[divs.length-1], 'get last one');
-		strictEqual(divs.only(1,4).length, 3, "got sublist of proper length")
+		strictEqual(divs.only(1,4).length, 3, "got sublist of proper length");
 	});
 
 	test("by selector, on multiple", function() {
 		var divs = HTML.body.section.div;
-		strictEqual(divs.only(-1), divs[divs.length-1], 'get last one');
-		strictEqual(divs.only(0,2).length, 2, "got list of two")
+		strictEqual(divs.only('#first'), HTML.find('#first'), 'got #first');
 	});
 
 	test("by function, on multiple", function() {
 		var odds = function(n,i){ return i%2; };
-		strictEqual(HTML.body.section.div.only(odds).length, 2, "got two odd divs")
+		strictEqual(HTML.body.section.div.only(odds).length, 2, "got two odd divs");
 	});
 
 
 	module("search");
 
-	test("HTML.find(<selector>) -- Returns array not nodelist", function() {
-		ok(HTML.find("div") instanceof Array, "Is array!");
+	test("find multiple, get array", function() {
+		ok(HTML.find("div") instanceof Array, "should be an array");
 	});
 
-	test("HTML.find(<id>) -- Returns single element", function() {
-		ok(HTML.find("#identity") instanceof HTMLElement, "Is an element");
+	test("find one, get HTMLElement", function() {
+		ok(HTML.find("#identity") instanceof HTMLElement, "should be an element");
 	});
 
-	test("HTML.find(<selector>) -- Returns undefined if not elements found", function() {
-		equal(HTML.find("#idontexist"), undefined, "Undefined!");
+	test("find nonexistent, get empty array", function() {
+		ok(!HTML.find("#idontexist").length, "empty array");
 	});
 
-	test("HTML.<tag>.find(<selector>) -- Scoped find selection", function() {
-		ok(HTML.section.find("div"), "Selection!");
+	test("contextual search", function() {
+		strictEqual(HTML.body.section.find("div").length, 5, "should be five divs, not seven");
 	});
 
-	test("HTML.find(<selector>).<tag> -- DOM transversal after selector", function() {
-		ok(HTML.find("section").div, "Exists!");
+	test("traverse on result", function() {
+		ok(HTML);
+		ok(HTML.find('section'));
+		ok(HTML.find("section").div, "should be present");
 	});
 
-}());
+}(HTML));
 
