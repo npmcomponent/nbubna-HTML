@@ -57,15 +57,16 @@ list.only(function(l,i){return i%2;}).textContent += 'Odd'; // by function
 ```
 
 ## Extensions
-The [minified][all] version automatically includes core and the 
-"official" extensions (only one at the moment):
+The [minified][all] version automatically includes 
+`find()`,`each()`,`only()`,`add()`and`remove()` (so far). 
+The one "official" extensions (so far) is:
 
-#### [HTML.add.js][add]
+#### [HTML.emmet.js][add]
 
-[add]: http://raw.github.com/nbubna/HTML/master/src/HTML.add.js
+[add]: http://raw.github.com/nbubna/HTML/master/dist/HTML.emmet.js
 
 ```js
-// use simple expressions to append content ([emmet][emmet] w/o grouping or numbering)
+// use simple expressions with `add()` ([emmet][emmet] w/o grouping or numbering)
 var content = HTML.body.add('div>section*5>p>').each(function(p) {
     p.textContext = "Hello world!";
 });
@@ -74,6 +75,6 @@ var content = HTML.body.add('div>section*5>p>').each(function(p) {
 [emmet]: http://docs.emmet.io/abbreviations/syntax/
 
 ## Release History
-* 2013-08-01 v0.9.0 (public, initial)
+* 2013-08-01 v0.9.0 (estimated first release)
 
 [v1.0.0]: https://github.com/nbubna/store/tree/1.0.0
