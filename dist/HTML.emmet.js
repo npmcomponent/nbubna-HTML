@@ -1,27 +1,27 @@
-/*! HTML - v0.9.0 - 2013-07-15
+/*! HTML - v0.9.0 - 2013-07-17
 * http://nbubna.github.io/HTML/
 * Copyright (c) 2013 ESHA Research; Licensed MIT, GPL */
 (function(document, _) {
     "use strict";
 
     var add = _.fn.add;
-    add.create = function(node, code) {
-        var parts = code.split(add.re()),
+    add.create = function(node, code, ref) {
+        var parts = code.split(add.emmetRE()),
             root = document.createDocumentFragment(),
             el = document.createElement(parts[0]);
         root.appendChild(el);
         for (var i=1,m=parts.length; i<m; i++) {
             var part = parts[i];
-            el = add.syntax[part.charAt(0)].call(el, part.substr(1), root) || el;
+            el = add.emmet[part.charAt(0)].call(el, part.substr(1), root) || el;
         }
-        node.appendChild(root);
+        add.insert(node, root, ref);
         return el;
     };
-    add.re = function() {
-        var chars = '\\'+Object.keys(add.syntax).join('|\\');
+    add.emmetRE = function() {
+        var chars = '\\'+Object.keys(add.emmet).join('|\\');
         return new RegExp('(?='+chars+')','g');
     };
-    add.syntax = {
+    add.emmet = {
         '#': function(id) {
             this.id = id;
         },
@@ -46,7 +46,7 @@
             return this;
         },
         '+': function(tag, root) {
-            return add.syntax['>'].call(this.parentNode || root, tag);
+            return add.emmet['>'].call(this.parentNode || root, tag);
         },
         '*': function(count) {
             var parent = this.parentNode,
@@ -59,7 +59,7 @@
             return els;
         },
         '^': function(tag, root) {
-            return add.syntax['+'].call(this.parentNode || root, tag, root);
+            return add.emmet['+'].call(this.parentNode || root, tag, root);
         },
         '{': function(text) {
             this.appendChild(document.createTextNode(text.substr(0, text.length-1)));
