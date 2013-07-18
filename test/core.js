@@ -58,7 +58,7 @@
 
 	module("each()");
 
-	test("each for single grandkid", 3, function() {
+	test("for single grandkid", 3, function() {
 		var self = HTML.body.section,
 		ret = self.each(function(section) {
 			ok(section instanceof HTMLElement, "still an element");
@@ -67,7 +67,7 @@
 		ok(ret === self, 'returned this');
 	});
 
-	test("each for multiple grandkids", function() {
+	test("for multiple grandkids", function() {
 		var pdiv, pi = -1,
 			self = HTML.body.section.div,
 		ret = self.each(function(div, i, arr) {
@@ -81,6 +81,64 @@
 		ok(ret === self, 'returned this');
 	});
 
+	test("field get", 5, function() {
+		var divs = HTML.body.section.div,
+			ids = divs.each('id');
+		divs.each(function(div, i) {
+			strictEqual(div.id, ids[i], "matching id");
+		});
+	});
+
+	test("field set", 11, function() {
+		var divs = HTML.body.section.div,
+			ret = divs.each('className', 'foo');
+		strictEqual(divs, ret, 'should be same list');
+		divs.each(function(div) {
+			strictEqual(div.className, 'foo', 'className should be foo');
+		});
+		divs.each('className', '');
+		divs.each(function(div) {
+			ok(!div.className, 'className should be empty again');
+		});
+	});
+
+	//TODO: field function
+	test("field function", 7, function() {
+		var ends = HTML.find('#first,#last'),
+			clones = ends.each('cloneNode');
+		notEqual(ends, clones, 'should not return self');
+		clones.forEach(function(clone) {
+			ok(!clone.parentNode, 'clones have no parents');
+		});
+		ends.each(function(end, i) {
+			strictEqual(end.tagName, clones[i].tagName, 'same tags');
+			strictEqual(end.id, clones[i].id, 'same id');
+		});
+	});
+
+	test("nested field get", function() {
+		var divs = HTML.body.section.div,
+			strings = divs.each('parentNode.tagName');
+		strictEqual(strings.length, divs.length, 'got a parent tag for each div');
+		strings = strings.filter(function(s, i){ return strings.indexOf(s) === i; });
+		strictEqual(strings.length, 1, 'all have the same parent');
+		strictEqual(strings[0], 'SECTION', 'parent tagName is SECTION');
+	});
+
+	test("nested field set", function() {
+		var first = HTML.find('#first');
+		first.each('parentNode.id', 'momma');
+		strictEqual(HTML.body.section.id, 'momma');
+	});
+
+	test("nested field function with arg", function() {
+		var divs = HTML.body.section.div,
+			ret = divs.each('classList.add', 'bar');// fails in IE9, i think
+		strictEqual(ret, divs, 'should return self');
+		divs.each(function(div) {
+			strictEqual(div.className, 'bar', 'should have "bar" class');
+		});
+	});
 
 	module("only()");
 
