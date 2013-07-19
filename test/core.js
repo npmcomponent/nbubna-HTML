@@ -102,7 +102,6 @@
 		});
 	});
 
-	//TODO: field function
 	test("field function", 7, function() {
 		var ends = HTML.find('#first,#last'),
 			clones = ends.each('cloneNode');
@@ -138,6 +137,34 @@
 		divs.each(function(div) {
 			strictEqual(div.className, 'bar', 'should have "bar" class');
 		});
+	});
+
+	test("field value/argument index replacement", 6, function() {
+		var divs = HTML.body.section.div,
+			ret = divs.each('textContent', '#${i} is what it is');
+		strictEqual(ret, divs, 'should return self');
+		divs.each(function(div, i) {
+			strictEqual(div.textContent, '#'+i+' is what it is', 'text should include proper index');
+		});
+		divs.each('textContent', '');
+	});
+
+	test("field value/argument function", 21, function() {
+		var divs = HTML.body.section.div,
+			fn = function(el, i, args) {
+				if (args) {
+					ok('nodeType' in el, 'got node as first argument');
+					ok(typeof i === "number", 'got index as second argument');
+					deepEqual(args, [fn], 'third argument is array containing this function');
+				}
+				return '#'+i+' has id: '+el.id;
+			},
+			ret = divs.each('textContent', fn);
+		strictEqual(ret, divs, 'should return self');
+		divs.each(function(div, i) {
+			strictEqual(div.textContent, fn(div, i), 'text content has text made from index and an element property');
+		});
+		divs.each('textContent', '');
 	});
 
 	module("only()");

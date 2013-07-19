@@ -86,23 +86,37 @@
         field: function(key) {
             var args = _.slice.call(arguments, 1);
             key = _.fn.each[key] || key;// e.g. _.fn.each['+class'] = 'classList.add';
-            return function(el) {
-                var prop = key, o = el;
-                if (prop.indexOf('.') > 0) {
-                    var props = prop.split('.');
-                    while (props.length > 1 && (o = o[prop = props.shift()])){}
-                    o = o || el;
-                    prop = o ? props[0] : key;
-                }
-                var val = o[prop];
-                if (val !== undefined) {
-                    if (typeof val === "function") { return val.apply(o, args); }
-                    else if (args.length) { o[prop] = args[0]; }
-                    else { return val; }
-                }
-                else if (args.length) { el.setAttribute(key, args[0]); }
-                else { return el.getAttribute(key); }
-            };
+            return function(el, i){ return _.resolve(key, el, args, i); };
+        },
+        resolve: function(_key, _el, args, i) {
+            var key = _key, el = _el;// copy prefixed originals so we can recover them if need be
+            args = args.length ? _.fill(args, i, el) : null;
+            if (key.indexOf('.') > 0) {
+                var keys = key.split('.');
+                while (keys.length > 1 && (el = el[key = keys.shift()])){}
+                // if lookup failed, reset to originals
+                el = el || _el;
+                key = el ? keys[0] : _key;
+            }
+            var val = el[key];
+            if (val !== undefined) {
+                if (typeof val === "function") { return val.apply(el, args); }
+                else if (args) { el[key] = args[0]; }
+                else { return val; }
+            }
+            else if (args) { el.setAttribute(_key, args[0]); }
+            else { return el.getAttribute(_key); }
+        },
+        fill: function(args, index, el) {
+            var ret = [];
+            for (var i=0,m=args.length; i<m; i++) {
+                var arg = args[i],
+                    type = typeof arg;
+                ret[i] = type === "string" ? arg.replace(/\$\{i\}/g, index) :
+                         type === "function" ? arg(el, index, args) :
+                         arg;
+            }
+            return ret;
         }
     };
 
