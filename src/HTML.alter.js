@@ -32,6 +32,7 @@
         } else {
             node.appendChild(child);
         }
+        _.updated(node);
         return child;
     };
     add.find = function(node, ref) {
@@ -43,6 +44,11 @@
         }
     };
 
+    _.updated = function(node) {
+        node._internal = true;
+        _.children(node);
+    };
+
     _.fn.remove = function() {
         var parents = [];
         this.each(function(node) {
@@ -51,14 +57,7 @@
                 parents.push(parent);
             }
             parent.removeChild(node);
-
-            var key = _.type(node),
-                val = parent[key];
-            if (val && val.isNodeList) {
-                val.splice(val.indexOf(node), 1);
-            } else {
-                delete parent[key];
-            }
+            _.updated(parent);
         });
         return _.list(parents);
     };

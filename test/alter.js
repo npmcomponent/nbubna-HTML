@@ -32,7 +32,7 @@
 	test("add node", function() {
 		var node = document.createElement('article');
 		equal(HTML.body.add(node), node, "added node and got it back");
-		ok(HTML.body.article && 'isNode' in node, 'added node has been assimilated');
+		ok(HTML.body.article && 'each' in node, 'added node has been assimilated');
 		node.remove();
 	});
 
@@ -49,17 +49,17 @@
     ok(el, 'have element');
     equal(el.remove(), HTML.body, 'remove returns parent');
     ok(!el.parentNode, 'no parent after removal');
-    ok(!('doomed' in HTML.body), 'child property was deleted');
+    ok(!HTML.body.doomed.length, 'child property is empty array');
   });
 
   test("list", 8, function() {
     var list = HTML.body.add('doa*5');
-    ok(list && list.isNodeList, 'have list');
+    ok(list && list.forEach, 'have array');
     equal(list.remove(), HTML.body, 'remove returns parent');
     list.each(function(doa) {
       ok(!doa.parentNode, 'no parents after removal');
     });
-    ok(!('doa' in HTML.body), 'list property was deleted');
+    ok(!HTML.body.doa.length, 'child property is empty array');
   });
 
 }(HTML));
