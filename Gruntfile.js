@@ -38,9 +38,15 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.js'
       },
       all: {
-        src: ['src/<%= pkg.name %>.core.js','src/<%= pkg.name %>.alter.js','src/<%= pkg.name %>.emmet.js'],
+        src: ['src/<%= pkg.name %>.core.js',
+              'src/<%= pkg.name %>.alter.js',
+              'src/<%= pkg.name %>.emmet.js'],
         dest: 'dist/<%= pkg.name %>.all.js'
       },
+      stringify: {
+        src: ['src/<%= pkg.name %>.stringify.js'],
+        dest: 'dist/<%= pkg.name %>.stringify.js'
+      }
     },
     uglify: {
       options: {

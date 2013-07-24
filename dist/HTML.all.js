@@ -1,4 +1,4 @@
-/*! HTML - v0.9.0 - 2013-07-22
+/*! HTML - v0.9.0 - 2013-07-23
 * http://nbubna.github.io/HTML/
 * Copyright (c) 2013 ESHA Research; Licensed MIT, GPL */
 (function(window, document, Observer) {
@@ -52,7 +52,7 @@
             } catch (e) {}
         },
         mutation: function(e) {
-            var node = e.target;// only wipe _children for 3rd party changes
+            var node = e.target;// only wipe cache for 3rd party changes
             delete node[node._internal ? '_internal' : '_children'];
         },
         fn: {
