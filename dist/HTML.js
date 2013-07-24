@@ -1,4 +1,4 @@
-/*! HTML - v0.9.0 - 2013-07-23
+/*! HTML - v0.9.0 - 2013-07-24
 * http://nbubna.github.io/HTML/
 * Copyright (c) 2013 ESHA Research; Licensed MIT, GPL */
 (function(window, document, Observer) {
@@ -92,7 +92,7 @@
         },
         field: function(key) {
             var args = _.slice.call(arguments, 1);
-            key = _.fn.each[key] || key;// e.g. _.fn.each['+class'] = 'classList.add';
+            key = _.field[key] || key;// e.g. _.fn.each['+class'] = 'classList.add';
             return function(el, i){ return _.resolve(key, el, args, i); };
         },
         resolve: function(_key, _el, args, i) {

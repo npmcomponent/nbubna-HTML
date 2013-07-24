@@ -137,6 +137,7 @@
 		divs.each(function(div) {
 			strictEqual(div.className, 'bar', 'should have "bar" class');
 		});
+		divs.each('classList.remove','bar');
 	});
 
 	test("field value/argument index replacement", 6, function() {
@@ -165,6 +166,19 @@
 			strictEqual(div.textContent, fn(div, i), 'text content has text made from index and an element property');
 		});
 		divs.each('textContent', '');
+	});
+
+	test("aliased field", function() {
+		HTML._.field['-class'] = 'classList.remove';
+		var divs = HTML.body.section.div.each('classList.add','bar');
+		divs.each(function(el) {
+			ok(el.className.indexOf('bar') >= 0, 'have class bar');
+		});
+		var	ret = divs.each('-class', 'bar');
+		strictEqual(ret, divs, 'should return self');
+		divs.each(function(el) {
+			ok(el.className.indexOf('bar') < 0, 'don\'t have class bar');
+		});
 	});
 
 	module("only()");

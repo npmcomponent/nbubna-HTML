@@ -89,7 +89,7 @@
         },
         field: function(key) {
             var args = _.slice.call(arguments, 1);
-            key = _.fn.each[key] || key;// e.g. _.fn.each['+class'] = 'classList.add';
+            key = _.field[key] || key;// e.g. _.fn.each['+class'] = 'classList.add';
             return function(el, i){ return _.resolve(key, el, args, i); };
         },
         resolve: function(_key, _el, args, i) {
