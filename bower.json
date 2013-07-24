@@ -2,7 +2,7 @@
     "name": "HTML",
     "version": "0.9.0",
     "main": "dist/HTML.min.js",
-    "description": "A simpler way to traverse and manipulate your HTML",
+    "description": "A simple, extensible way to work directly with the DOM.",
     "keywords": [
         "HTML",
         "DOM",
@@ -10,7 +10,10 @@
         "append",
         "emmet",
         "manipulate",
-        "voyeur"
+        "extend",
+        "native",
+        "voyeur",
+        "element"
     ],
     "author": {
         "name": "ESHA Research",
