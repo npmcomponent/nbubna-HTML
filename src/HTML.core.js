@@ -49,7 +49,7 @@
             } catch (e) {}
         },
         mutation: function(e) {
-            var node = e.target;// only wipe _children for 3rd party changes
+            var node = e.target;// only wipe cache for 3rd party changes
             delete node[node._internal ? '_internal' : '_children'];
         },
         fn: {
