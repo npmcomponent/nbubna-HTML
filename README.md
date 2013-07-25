@@ -1,14 +1,15 @@
 HTML is a small, extensible library to help you use the DOM in a simpler, more direct way.
 
-#### [Demo][home]
-#### [API][api]
-#### [FAQ][faq]
+Please check out:
+* the [demo][home]
+* the [API][api]
+* the [F.A.Q.][faq]
 
 [home]: http://nbubna.github.io/HTML
 [api]: http://nbubna.github.io/HTML#API
 [faq]: http://nbubna.github.io/HTML#FAQ
 
-## Minimal Version:
+### Minimal Version:
 
 Download: [HTML.min.js][prod]  or  [HTML.js][dev]  
 [Bower][bower]: `bower install HTML`  
@@ -21,23 +22,23 @@ Download: [HTML.min.js][prod]  or  [HTML.js][dev]
 
 This version supports `find()`, `each()`, and `only()`.
 
-## Full Version:
+### Full Version:
 
 Download: [HTML.all.min.js][all-min] or [HTML.all.js][all]
 
 For just a few bytes more you get [HTML.alter.js][alter] and [HTML.emmet.js][emmet], which give
-you `remove()`, 'add()' and support for most [emmet abbreviations][abbr] in `add()`.
+you `remove()`, `add()` and support for most [emmet abbreviations][abbr] in `add()`.
 
 [all-min]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.min.js
 [all]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.js
 [alter]: http://raw.github.com/nbubna/HTML/master/dist/HTML.alter.js
-[emmet]: http://raw.github.com/nbubna/HTML/master/dist/HTML.alter.js
+[emmet]: http://raw.github.com/nbubna/HTML/master/dist/HTML.emmet.js
 [abbr]: http://docs.emmet.io/abbreviations/syntax/
 
-## Release History
+### Release History
 * 2013-07-24 [v0.9.0][] (first public release)
 
-[v0.9.0]: https://github.com/nbubna/store/tree/0.9.0
+[v0.9.0]: https://github.com/nbubna/HTML/tree/0.9.0
 
 Thanks to Adrian Cooney for the inspiration and [starting point][voyeur] for this project.
 
