@@ -1,9 +1,9 @@
 HTML is a small, extensible library to help you use the DOM in a simpler, more direct way.
 
-Please check out:
-* the [demo][home]
-* the [API][api]
-* the [F.A.Q.][faq]
+Please check out the:
+* [Demo][home]
+* [API][api]
+* [F.A.Q.][faq]
 
 [home]: http://nbubna.github.io/HTML
 [api]: http://nbubna.github.io/HTML#API
@@ -20,17 +20,18 @@ Download: [HTML.min.js][prod]  or  [HTML.js][dev]
 [npm]: https://npmjs.org/package/html.js
 [bower]: http://bower.io/
 
-This version supports `find()`, `each()`, and `only()`.
+Includes dot-traversal, `find()`, `each()`, and `only()`. ([HTML.core.js][core])
 
 ### Full Version:
 
 Download: [HTML.all.min.js][all-min] or [HTML.all.js][all]
 
-For just a few bytes more you get [HTML.alter.js][alter] and [HTML.emmet.js][emmet], which give
-you `remove()`, `add()` and support for most [emmet abbreviations][abbr] in `add()`.
+Adds `add()`, `remove()`, and [emmet abbreviations][abbr] in `add()`.
+([HTML.core.js][core], [HTML.alter.js][alter], [HTML.emmet.js][emmet])
 
 [all-min]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.min.js
 [all]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.js
+[core]: http://raw.github.com/nbubna/HTML/master/dist/HTML.core.js
 [alter]: http://raw.github.com/nbubna/HTML/master/dist/HTML.alter.js
 [emmet]: http://raw.github.com/nbubna/HTML/master/dist/HTML.emmet.js
 [abbr]: http://docs.emmet.io/abbreviations/syntax/
