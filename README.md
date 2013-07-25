@@ -8,34 +8,19 @@ Please check out the [demo][demo], the [API][api] and the [F.A.Q.][faq].
 [faq]: http://nbubna.github.io/HTML#FAQ
 [fn]: http://nbubna.github.io/HTML#_.fn
 
-#### Minimal Version:
-
-Download: [HTML.min.js][prod]  or  [HTML.js][dev]  
-[Bower][bower]: `bower install HTML`  
-[NPM][npm]: `npm install html.js`   
-
-[prod]: https://raw.github.com/nbubna/HTML/master/dist/HTML.min.js
-[dev]: https://raw.github.com/nbubna/HTML/master/dist/HTML.js
-[npm]: https://npmjs.org/package/html.js
-[bower]: http://bower.io/
-
-Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], and [`only()`][only]:
-* [HTML.core.js][core]
-
-[dot]: http://nbubna.github.io/HTML#dot-traversal
-[find]: http://nbubna.github.io/HTML#find()
-[each]: http://nbubna.github.io/HTML#each()
-[only]: http://nbubna.github.io/HTML#only()
-
 #### Full Version:
 
 Download: [HTML.all.min.js][all-min] or [HTML.all.js][all]
+[Bower][bower]: `bower install HTML`  
+[NPM][npm]: `npm install html.js`   
 
 Includes dot-traversal, [`find()`][find], [`each()`][each], [`only()`][only], [`add()`][add], [`remove()`][remove], and [emmet abbreviations][abbr] in [`add()`][add-emmet]:  
 * [HTML.core.js][core]
 * [HTML.alter.js][alter]
 * [HTML.emmet.js][emmet]
 
+[npm]: https://npmjs.org/package/html.js
+[bower]: http://bower.io/
 [all-min]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.min.js
 [all]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.js
 [core]: http://raw.github.com/nbubna/HTML/master/dist/HTML.core.js
@@ -45,6 +30,21 @@ Includes dot-traversal, [`find()`][find], [`each()`][each], [`only()`][only], [`
 [add]: http://nbubna.github.io/HTML#add()
 [remove]: http://nbubna.github.io/HTML#remove()
 [add-emmet]: http://nbubna.github.io/HTML#add(emmet)
+
+#### Minimal Version:
+
+Download: [HTML.min.js][prod]  or  [HTML.js][dev]  
+
+[prod]: https://raw.github.com/nbubna/HTML/master/dist/HTML.min.js
+[dev]: https://raw.github.com/nbubna/HTML/master/dist/HTML.js
+
+Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], and [`only()`][only]:
+* [HTML.core.js][core]
+
+[dot]: http://nbubna.github.io/HTML#dot-traversal
+[find]: http://nbubna.github.io/HTML#find()
+[each]: http://nbubna.github.io/HTML#each()
+[only]: http://nbubna.github.io/HTML#only()
 
 ### Release History
 * 2013-07-24 [v0.9.0][] (first public release)
