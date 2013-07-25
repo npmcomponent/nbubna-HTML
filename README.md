@@ -17,14 +17,14 @@ Download: [HTML.min.js][prod]  or  [HTML.js][dev]
 [npm]: https://npmjs.org/package/html.js
 [bower]: http://bower.io/
 
-Includes dot-traversal, `find()`, `each()`, and `only()`. ([HTML.core.js][core])
+Includes dot-traversal, `find()`, `each()`, and `only()`.  [HTML.core.js][core]
 
 #### Full Version:
 
 Download: [HTML.all.min.js][all-min] or [HTML.all.js][all]
 
-Includes dot-traversal, `find()`, `each()`, `only()`, `add()`, `remove()`, and [emmet abbreviations][abbr] in `add()`.
-([HTML.core.js][core], [HTML.alter.js][alter], [HTML.emmet.js][emmet])
+Includes dot-traversal, `find()`, `each()`, `only()`, `add()`, `remove()`, and [emmet abbreviations][abbr] in `add()`.  
+[HTML.core.js][core], [HTML.alter.js][alter], [HTML.emmet.js][emmet]
 
 [all-min]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.min.js
 [all]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.js
