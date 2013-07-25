@@ -48,9 +48,10 @@ Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], and [`only()`
 
 ### Release History
 * 2013-07-24 [v0.9.0][] (first public release)
-* 2013-07-25 [v0.9.1][] (add remove(true))
+* 2013-07-25 [v0.9.1][] (full version as main, remove(true))
 
 [v0.9.0]: https://github.com/nbubna/HTML/tree/0.9.0
+[v0.9.1]: https://github.com/nbubna/HTML/tree/0.9.1
 
 Thanks to Adrian Cooney for the inspiration and [starting point][voyeur] for this project.
 
