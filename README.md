@@ -1,8 +1,9 @@
-HTML is a small, [extensible][fn] library to help you enjoy the native DOM in a simple, direct way.
+[HTML][home] is a small, [extensible][fn] library to help you enjoy the native DOM in a simple, direct way.
 
-Please check out the [demo][home], the [API][api] and the [F.A.Q.][faq].
+Please check out the [demo][demo], the [API][api] and the [F.A.Q.][faq].
 
 [home]: http://nbubna.github.io/HTML
+[demo]: http://nbubna.github.io/HTML#Demo
 [api]: http://nbubna.github.io/HTML#API
 [faq]: http://nbubna.github.io/HTML#FAQ
 [fn]: http://nbubna.github.io/HTML#_.fn
@@ -47,6 +48,7 @@ Includes dot-traversal, [`find()`][find], [`each()`][each], [`only()`][only], [`
 
 ### Release History
 * 2013-07-24 [v0.9.0][] (first public release)
+* 2013-07-25 [v0.9.1][] (add remove(true))
 
 [v0.9.0]: https://github.com/nbubna/HTML/tree/0.9.0
 
