@@ -10,7 +10,7 @@ Please check out the [demo][demo], the [API][api] and the [F.A.Q.][faq].
 
 #### Full Version:
 
-Download: [HTML.all.min.js][all-min] or [HTML.all.js][all]
+Download: [HTML.all.min.js][all-min] or [HTML.all.js][all]  
 [Bower][bower]: `bower install HTML`  
 [NPM][npm]: `npm install html.js`   
 
