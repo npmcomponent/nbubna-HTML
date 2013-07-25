@@ -1,15 +1,12 @@
-HTML is a small, extensible library to help you use the DOM in a simpler, more direct way.
+HTML is a small, extensible library to help you use the native DOM in a simple, direct way.
 
-Please check out the:
-* [Demo][home]
-* [API][api]
-* [F.A.Q.][faq]
+Please check out the [demo][home], the [API][api] and the [F.A.Q.][faq].
 
 [home]: http://nbubna.github.io/HTML
 [api]: http://nbubna.github.io/HTML#API
 [faq]: http://nbubna.github.io/HTML#FAQ
 
-### Minimal Version:
+#### Minimal Version:
 
 Download: [HTML.min.js][prod]  or  [HTML.js][dev]  
 [Bower][bower]: `bower install HTML`  
@@ -22,7 +19,7 @@ Download: [HTML.min.js][prod]  or  [HTML.js][dev]
 
 Includes dot-traversal, `find()`, `each()`, and `only()`. ([HTML.core.js][core])
 
-### Full Version:
+#### Full Version:
 
 Download: [HTML.all.min.js][all-min] or [HTML.all.js][all]
 
