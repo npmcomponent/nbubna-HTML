@@ -49,17 +49,17 @@
         _.children(node);
     };
 
-    _.fn.remove = function() {
+    _.fn.remove = function(noDeadEnd) {
         var parents = [];
         this.each(function(node) {
             var parent = node.parentNode;
-            if (parents.indexOf(parent) < 0) {
+            if (noDeadEnd && parents.indexOf(parent) < 0) {
                 parents.push(parent);
             }
             parent.removeChild(node);
             _.updated(parent);
         });
-        return _.list(parents);
+        return noDeadEnd ? _.list(parents) : this;
     };
 
 })(document, HTML._);

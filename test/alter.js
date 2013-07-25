@@ -47,7 +47,7 @@
   test("single", 4, function() {
     var el = HTML.body.add('doomed');
     ok(el, 'have element');
-    equal(el.remove(), HTML.body, 'remove returns parent');
+    equal(el.remove(), el, 'remove returns self');
     ok(!el.parentNode, 'no parent after removal');
     ok(!HTML.body.doomed.length, 'child property is empty array');
   });
@@ -55,11 +55,23 @@
   test("list", 8, function() {
     var list = HTML.body.add('doa*5');
     ok(list && list.forEach, 'have array');
-    equal(list.remove(), HTML.body, 'remove returns parent');
+    strictEqual(list.remove(), list, 'remove returns self');
     list.each(function(doa) {
       ok(!doa.parentNode, 'no parents after removal');
     });
     ok(!HTML.body.doa.length, 'child property is empty array');
+  });
+
+  test("keep active chain", function() {
+    var el = HTML.body.add('doomed');
+    ok(el, 'have element');
+    equal(el.remove(true), HTML.body, 'remove(true) returns parent');
+  });
+
+  test("keep chain for list", function() {
+    var list = HTML.body.add('doa*5');
+    ok(list && list.forEach, 'have array');
+    strictEqual(list.remove(true), HTML.body, 'remove returns parent(s)');
   });
 
 }(HTML));

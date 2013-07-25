@@ -1,4 +1,4 @@
-/*! HTML - v0.9.0 - 2013-07-24
+/*! HTML - v0.9.0 - 2013-07-25
 * http://nbubna.github.io/HTML/
 * Copyright (c) 2013 ESHA Research; Licensed MIT, GPL */
 (function(window, document, Observer) {
@@ -201,17 +201,17 @@
         _.children(node);
     };
 
-    _.fn.remove = function() {
+    _.fn.remove = function(noDeadEnd) {
         var parents = [];
         this.each(function(node) {
             var parent = node.parentNode;
-            if (parents.indexOf(parent) < 0) {
+            if (noDeadEnd && parents.indexOf(parent) < 0) {
                 parents.push(parent);
             }
             parent.removeChild(node);
             _.updated(parent);
         });
-        return _.list(parents);
+        return noDeadEnd ? _.list(parents) : this;
     };
 
 })(document, HTML._);
