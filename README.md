@@ -23,7 +23,7 @@ Includes dot-traversal, `find()`, `each()`, and `only()`. ([HTML.core.js][core])
 
 Download: [HTML.all.min.js][all-min] or [HTML.all.js][all]
 
-Adds `add()`, `remove()`, and [emmet abbreviations][abbr] in `add()`.
+Includes dot-traversal, `find()`, `each()`, `only()`, `add()`, `remove()`, and [emmet abbreviations][abbr] in `add()`.
 ([HTML.core.js][core], [HTML.alter.js][alter], [HTML.emmet.js][emmet])
 
 [all-min]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.min.js
