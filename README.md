@@ -15,7 +15,7 @@ Download: [HTML.all.min.js][all-min] or [HTML.all.js][all]
 [NPM][npm]: `npm install html.js`   
 [Component][component]: `component install nbubna/HTML`  
 
-Includes dot-traversal, [`find()`][find], [`each()`][each], [`only()`][only], [`add()`][add], [`remove()`][remove], and [emmet abbreviations][abbr] in [`add()`][add-emmet]:  
+Includes dot-traversal, [`find()`][find], [`each()`][each], [`only()`][only], [`add()`][add], [`remove()`][remove], [`HTML.ify()`][ify] and [emmet abbreviations][abbr] in [`add()`][add-emmet]:  
 * [HTML.core.js][core]
 * [HTML.alter.js][alter]
 * [HTML.emmet.js][emmet]
@@ -31,6 +31,7 @@ Includes dot-traversal, [`find()`][find], [`each()`][each], [`only()`][only], [`
 [abbr]: http://docs.emmet.io/abbreviations/syntax/
 [add]: http://nbubna.github.io/HTML#add()
 [remove]: http://nbubna.github.io/HTML#remove()
+[ify]: http://nbubna.github.io/HTML#ify()
 [add-emmet]: http://nbubna.github.io/HTML#add(emmet)
 
 #### Minimal Version:
@@ -40,7 +41,7 @@ Download: [HTML.min.js][prod]  or  [HTML.js][dev]
 [prod]: https://raw.github.com/nbubna/HTML/master/dist/HTML.min.js
 [dev]: https://raw.github.com/nbubna/HTML/master/dist/HTML.js
 
-Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], and [`only()`][only]:
+Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], [`only()`][only] and [`HTML.ify()`][ify]:
 * [HTML.core.js][core]
 
 [dot]: http://nbubna.github.io/HTML#dot-traversal
