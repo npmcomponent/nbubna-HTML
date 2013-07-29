@@ -13,6 +13,7 @@ Please check out the [demo][demo], the [API][api] and the [F.A.Q.][faq].
 Download: [HTML.all.min.js][all-min] or [HTML.all.js][all]  
 [Bower][bower]: `bower install HTML`  
 [NPM][npm]: `npm install html.js`   
+[Component][component]: `component install nbubna/HTML`  
 
 Includes dot-traversal, [`find()`][find], [`each()`][each], [`only()`][only], [`add()`][add], [`remove()`][remove], and [emmet abbreviations][abbr] in [`add()`][add-emmet]:  
 * [HTML.core.js][core]
@@ -21,6 +22,7 @@ Includes dot-traversal, [`find()`][find], [`each()`][each], [`only()`][only], [`
 
 [npm]: https://npmjs.org/package/html.js
 [bower]: http://bower.io/
+[component]: http://component.io/
 [all-min]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.min.js
 [all]: http://raw.github.com/nbubna/HTML/master/dist/HTML.all.js
 [core]: http://raw.github.com/nbubna/HTML/master/dist/HTML.core.js
