@@ -126,6 +126,9 @@
 
     var HTML = _.node(document.documentElement);// early availability
     HTML._ = _;
+    HTML.ify = function(o) {
+        return !o || 'length' in o ? _.list(o||[]) : _.node(o);
+    };
     ['webkitM','mozM','msM','m'].forEach(function(prefix) {
         if (HTML[prefix+'atchesSelector']) {
             _.matches = prefix+'atchesSelector';

@@ -1,34 +1,45 @@
 (function(HTML) {
-  /*
-    ======== A Handy Little QUnit Reference ========
-    http://api.qunitjs.com/
+/*
+======== A Handy Little QUnit Reference ========
+http://api.qunitjs.com/
 
-    Test methods:
-      module(name, {[setup][ ,teardown]})
-      test(name, callback)
-      expect(numberOfAssertions)
-      stop(increment)
-      start(decrement)
-    Test assertions:
-      ok(value, [message])
-      equal(actual, expected, [message])
-      notEqual(actual, expected, [message])
-      deepEqual(actual, expected, [message])
-      notDeepEqual(actual, expected, [message])
-      strictEqual(actual, expected, [message])
-      notStrictEqual(actual, expected, [message])
-      throws(block, [expected], [message])
-  */
+Test methods:
+  module(name, {[setup][ ,teardown]})
+  test(name, callback)
+  expect(numberOfAssertions)
+  stop(increment)
+  start(decrement)
+Test assertions:
+  ok(value, [message])
+  equal(actual, expected, [message])
+  notEqual(actual, expected, [message])
+  deepEqual(actual, expected, [message])
+  notDeepEqual(actual, expected, [message])
+  strictEqual(actual, expected, [message])
+  notStrictEqual(actual, expected, [message])
+  throws(block, [expected], [message])
+*/
 
-  module("HTML");
+	module("HTML");
 
-  test('HTML', function() {
-    ok(HTML, 'HTML should be present');
-  });
+	test('HTML', function() {
+		ok(HTML, 'HTML should be present');
+	});
 
-  test('_', function() {
-    ok(HTML._, "HTML._ should be present");
-  });
+	test('_', function() {
+		ok(HTML._, "HTML._ should be present");
+	});
+
+	test('ify', function() {
+		var el = document.querySelector('section'),
+			els = document.querySelectorAll('div');
+		ok(!el.each, 'not HTMLified yet');
+		ok(!els.each, 'not HTMLified yet');
+		el = HTML.ify(el);
+		els = HTML.ify(els);
+		ok(el.each, 'HTMLified now');
+		ok(els.each, 'HTMLified now');
+	});
 
 	test("HTML is the root", function() {
 		strictEqual(HTML, document.documentElement, "HTML is the root document element");
