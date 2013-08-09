@@ -31,14 +31,16 @@ Test assertions:
 	});
 
 	test('ify', function() {
-		var el = document.querySelector('section'),
-			els = document.querySelectorAll('div');
+		HTML.body.insertAdjacentHTML('beforeend', '<section id="ify"><a></a><a></a></section>');
+		var el = document.querySelector('#ify'),
+			els = document.querySelectorAll('#ify a');
 		ok(!el.each, 'not HTMLified yet');
 		ok(!els.each, 'not HTMLified yet');
 		el = HTML.ify(el);
 		els = HTML.ify(els);
 		ok(el.each, 'HTMLified now');
 		ok(els.each, 'HTMLified now');
+		el.remove();
 	});
 
 	test("HTML is the root", function() {
@@ -60,6 +62,13 @@ Test assertions:
 	test("multiple grandkids gets an array", 2, function() {
 		ok(HTML.body.section.div, "got multiple");
 		ok(HTML.body.section.div instanceof Array, "as an array");
+	});
+
+	test("traverse kids of first item in list", function() {
+		var div = HTML.body.section.div;
+		ok(div instanceof Array, "array of divs");
+		ok(div.span, "got span child of first div in list");
+		strictEqual(div.span.parentNode, div[0], "double check parent's identity");
 	});
 
 	test("grandkids come descending order", function() {
@@ -113,10 +122,11 @@ Test assertions:
 		});
 	});
 
-	test("field function", 7, function() {
+	test("field function", 8, function() {
 		var ends = HTML.find('#first,#last'),
 			clones = ends.each('cloneNode');
 		notEqual(ends, clones, 'should not return self');
+		ok(clones.each, 'clone list is HTML-ified');
 		clones.forEach(function(clone) {
 			ok(!clone.parentNode, 'clones have no parents');
 		});
@@ -133,6 +143,20 @@ Test assertions:
 		strings = strings.filter(function(s, i){ return strings.indexOf(s) === i; });
 		strictEqual(strings.length, 1, 'all have the same parent');
 		strictEqual(strings[0], 'SECTION', 'parent tagName is SECTION');
+	});
+
+	test("attr that starts like nested field", function() {
+		var divs = HTML.body.section.div,
+			key = 'style.not-really',
+			count = divs.only(0).attributes.length;
+		divs.each(key, 'bar');
+		var attrs = divs.each(key);
+		strictEqual(attrs.length, divs.length, 'attr per div');
+		strictEqual(attrs[0], 'bar', 'is bar');
+		ok(!divs[0].style[key], 'no such style');
+		ok(divs.only(0).attributes.length, count+1, 'has new attribute');
+		divs.each(key, null);
+		strictEqual(divs[0].attributes.length, count, 'attr removed');
 	});
 
 	test("nested field set", function() {
@@ -190,6 +214,25 @@ Test assertions:
 		divs.each(function(el) {
 			ok(el.className.indexOf('bar') < 0, 'don\'t have class bar');
 		});
+	});
+
+	test("non-chaining each function on list", function() {
+		var divs = HTML.body.section.div,
+			results = divs.each(function(div) {
+				if (div.id) {
+					return { id: div.id };
+				}
+			});
+		notEqual(results, divs, 'should not get self back');
+		strictEqual(results.length, 3, 'only three divs with ids');
+	});
+
+	test("non-chaining each function on element", function() {
+		var div = HTML.find('#identity'),
+			result = div.each(function(div) {
+				return 'Id is: '+div.id;
+			});
+		strictEqual(result, 'Id is: identity', 'result should not be array');
 	});
 
 	module("only()");
