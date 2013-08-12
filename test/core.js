@@ -101,7 +101,7 @@ Test assertions:
 		ok(ret === self, 'returned this');
 	});
 
-	test("field get", 5, function() {
+	test("property get", 5, function() {
 		var divs = HTML.body.section.div,
 			ids = divs.each('id');
 		divs.each(function(div, i) {
@@ -109,7 +109,7 @@ Test assertions:
 		});
 	});
 
-	test("field set", 11, function() {
+	test("property set", 11, function() {
 		var divs = HTML.body.section.div,
 			ret = divs.each('className', 'foo');
 		strictEqual(divs, ret, 'should be same list');
@@ -122,7 +122,7 @@ Test assertions:
 		});
 	});
 
-	test("field function", 8, function() {
+	test("property function", 8, function() {
 		var ends = HTML.find('#first,#last'),
 			clones = ends.each('cloneNode');
 		notEqual(ends, clones, 'should not return self');
@@ -136,7 +136,7 @@ Test assertions:
 		});
 	});
 
-	test("nested field get", function() {
+	test("nested property get", function() {
 		var divs = HTML.body.section.div,
 			strings = divs.each('parentNode.tagName');
 		strictEqual(strings.length, divs.length, 'got a parent tag for each div');
@@ -145,7 +145,7 @@ Test assertions:
 		strictEqual(strings[0], 'SECTION', 'parent tagName is SECTION');
 	});
 
-	test("attr that starts like nested field", function() {
+	test("attr that starts like nested property", function() {
 		var divs = HTML.body.section.div,
 			key = 'style.not-really',
 			count = divs.only(0).attributes.length;
@@ -159,13 +159,13 @@ Test assertions:
 		strictEqual(divs[0].attributes.length, count, 'attr removed');
 	});
 
-	test("nested field set", function() {
+	test("nested property set", function() {
 		var first = HTML.find('#first');
 		first.each('parentNode.id', 'momma');
 		strictEqual(HTML.body.section.id, 'momma');
 	});
 
-	test("nested field function with arg", function() {
+	test("nested property function with arg", function() {
 		var divs = HTML.body.section.div,
 			ret = divs.each('classList.add', 'bar');// fails in IE9, i think
 		strictEqual(ret, divs, 'should return self');
@@ -175,7 +175,7 @@ Test assertions:
 		divs.each('classList.remove','bar');
 	});
 
-	test("field value/argument index replacement", 6, function() {
+	test("property value/argument index replacement", 6, function() {
 		var divs = HTML.body.section.div,
 			ret = divs.each('textContent', '#${i} is what it is');
 		strictEqual(ret, divs, 'should return self');
@@ -185,7 +185,7 @@ Test assertions:
 		divs.each('textContent', '');
 	});
 
-	test("field value/argument function", 21, function() {
+	test("property value/argument function", 21, function() {
 		var divs = HTML.body.section.div,
 			fn = function(el, i, args) {
 				if (args) {
@@ -203,8 +203,8 @@ Test assertions:
 		divs.each('textContent', '');
 	});
 
-	test("aliased field", function() {
-		HTML._.field['-class'] = 'classList.remove';
+	test("aliased property", function() {
+		HTML._.resolve['-class'] = 'classList.remove';
 		var divs = HTML.body.section.div.each('classList.add','bar');
 		divs.each(function(el) {
 			ok(el.className.indexOf('bar') >= 0, 'have class bar');
@@ -232,7 +232,7 @@ Test assertions:
 			result = div.each(function(div) {
 				return 'Id is: '+div.id;
 			});
-		strictEqual(result, 'Id is: identity', 'result should not be array');
+		strictEqual(result[0], 'Id is: identity', 'result should still be array');
 	});
 
 	module("only()");

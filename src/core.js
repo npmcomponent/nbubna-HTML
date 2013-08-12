@@ -61,23 +61,27 @@
         fn: {
             each: function(fn) {
                 var self = this.forEach ? this : [this],
-                    results, prop;
+                    results = [],
+                    prop, args;
                 if (typeof fn === "string") {
-                    prop = fn;
-                    fn = _.field.apply(_, arguments);
+                    prop = _.resolve[fn] || fn;// e.g. _.resolve['+class'] = 'classList.add';
+                    args = _.slice.call(arguments, 1);
+                    fn = function(el, i){ return _.resolve(prop, el, args, i); };
                 }
                 for (var i=0,m=self.length, result; i<m; i++) {
                     result = fn.call(self, _.node(self[i]), i, self);
                     if (result || (prop && result !== undefined)) {
-                        (results||(results=[])).push(result);
+                        if (result.forEach) {
+                            results.push.apply(results, result);
+                        } else {
+                            results.push(result);
+                        }
                     }
                 }
-                if (results && results[0]) {
-                    return results[0].matchesSelector ? _.list(results.filter(_.unique)) :
-                           self.length === 1 ? results[0] :
-                           results;
-                }
-                return this;
+                return !results[0] && results[0] !== false ? this :
+                    results[0].matchesSelector ? _.list(results.filter(_.unique)) :
+                    //self.length === 1 ? results[0] :
+                    results;
             },
             find: function(selector) {
                 var self = this.forEach ? this : [this];
@@ -100,11 +104,6 @@
                         )
                 );
             }
-        },
-        field: function(key) {
-            var args = _.slice.call(arguments, 1);
-            key = _.field[key] || key;// e.g. _.fn.each['+class'] = 'classList.add';
-            return function(el, i){ return _.resolve(key, el, args, i); };
         },
         resolve: function(_key, _el, args, i) {
             var key = _key, el = _el;// copy prefixed originals so we can recover them if need be
