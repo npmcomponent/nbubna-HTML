@@ -2,11 +2,9 @@
     "use strict";
 
     var add = _.fn.add = function(arg, ref) {
-        var list = [];
-        this.each(function(node) {
-            list = list.concat(add.all(node, arg, ref));
+        return this.each(function(node) {
+            return add.all(node, arg, ref);
         });
-        return _.list(list);
     };
     add.all = function(node, arg, ref) {
         if (typeof arg === "string") {// turn arg into an appendable
