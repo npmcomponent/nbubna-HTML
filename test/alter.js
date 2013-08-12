@@ -42,6 +42,8 @@
 		HTML.find('nav').remove();
 	});
 
+  //TODO: test add(el, ref);
+
   module("HTML element removal");
 
   test("single", 4, function() {
