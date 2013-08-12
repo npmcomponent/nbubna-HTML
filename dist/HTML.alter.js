@@ -1,15 +1,13 @@
-/*! HTML - v0.9.2 - 2013-07-29
+/*! HTML - v0.9.2 - 2013-08-12
 * http://nbubna.github.io/HTML/
 * Copyright (c) 2013 ESHA Research; Licensed MIT, GPL */
 (function(document, _) {
     "use strict";
 
     var add = _.fn.add = function(arg, ref) {
-        var list = [];
-        this.each(function(node) {
-            list = list.concat(add.all(node, arg, ref));
+        return this.each(function(node) {
+            return add.all(node, arg, ref);
         });
-        return _.list(list);
     };
     add.all = function(node, arg, ref) {
         if (typeof arg === "string") {// turn arg into an appendable
@@ -52,17 +50,15 @@
         _.children(node);
     };
 
-    _.fn.remove = function(noDeadEnd) {
-        var parents = [];
-        this.each(function(node) {
+    _.fn.remove = function(chain) {
+        return this.each(function(node) {
             var parent = node.parentNode;
-            if (noDeadEnd && parents.indexOf(parent) < 0) {
-                parents.push(parent);
+            if (parent) {
+                parent.removeChild(node);
+                _.updated(parent);
+                if (chain){ return parent; }
             }
-            parent.removeChild(node);
-            _.updated(parent);
         });
-        return noDeadEnd ? _.list(parents) : this;
     };
 
 })(document, HTML._);

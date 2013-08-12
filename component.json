@@ -11,8 +11,10 @@
     "manipulate",
     "extend",
     "better",
+    "befriend",
     "query",
     "element",
+    "event",
     "emmet",
     "native"
   ],
@@ -22,6 +24,6 @@
   "main": "src/component.js",
   "scripts": [
     "src/component.js",
-    "dist/HTML.all.js"
+    "dist/HTML.js"
   ]
 }

@@ -22,29 +22,36 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       core: {
-        src: ['src/<%= pkg.name %>.core.js'],
+        src: ['src/core.js'],
         dest: 'dist/<%= pkg.name %>.core.js'
       },
       alter: {
-        src: ['src/<%= pkg.name %>.alter.js'],
+        src: ['src/alter.js'],
         dest: 'dist/<%= pkg.name %>.alter.js'
       },
+      event: {
+        src: ['src/event.js'],
+        dest: 'dist/<%= pkg.name %>.event.js'
+      },
       emmet: {
-        src: 'src/<%= pkg.name %>.emmet.js',
+        src: 'src/emmet.js',
         dest: 'dist/<%= pkg.name %>.emmet.js'
       },
+      base: {
+        src: ['src/core.js',
+              'src/alter.js',
+              'src/event.js'],
+        dest: 'dist/<%= pkg.name %>.base.js'
+      },
       dist: {
-        src: ['src/<%= pkg.name %>.core.js','src/<%= pkg.name %>.alter.js'],
+        src: ['src/core.js',
+              'src/alter.js',
+              'src/event.js',
+              'src/emmet.js'],
         dest: 'dist/<%= pkg.name %>.js'
       },
-      all: {
-        src: ['src/<%= pkg.name %>.core.js',
-              'src/<%= pkg.name %>.alter.js',
-              'src/<%= pkg.name %>.emmet.js'],
-        dest: 'dist/<%= pkg.name %>.all.js'
-      },
       stringify: {
-        src: ['src/<%= pkg.name %>.stringify.js'],
+        src: ['src/stringify.js'],
         dest: 'dist/<%= pkg.name %>.stringify.js'
       }
     },
@@ -53,26 +60,34 @@ module.exports = function(grunt) {
         banner: '<%= banner %>',
         report: 'gzip'
       },
-      dist: {
-        src: 'dist/<%= pkg.name %>.js',
-        dest: 'dist/<%= pkg.name %>.min.js'
+      core: {
+        src: ['dist/<%= pkg.name %>.core.js'],
+        dest: 'dist/<%= pkg.name %>.core.min.js'
       },
-      all: {
-        src: ['dist/<%= pkg.name %>.all.js'],
-        dest: 'dist/<%= pkg.name %>.all.min.js'
+      base: {
+        src: 'dist/<%= pkg.name %>.base.js',
+        dest: 'dist/<%= pkg.name %>.base.min.js'
+      },
+      dist: {
+        src: ['dist/<%= pkg.name %>.js'],
+        dest: 'dist/<%= pkg.name %>.min.js'
       },
     },
     compress: {
       options: {
         mode: 'gzip'
       },
+      core: {
+        src: ['dist/<%= pkg.name %>.core.min.js'],
+        dest: ['dist/<%= pkg.name %>.core.min.js']
+      },
+      base: {
+        src: ['dist/<%= pkg.name %>.base.min.js'],
+        dest: 'dist/<%= pkg.name %>.base.min.js'
+      },
       dist: {
         src: ['dist/<%= pkg.name %>.min.js'],
         dest: 'dist/<%= pkg.name %>.min.js'
-      },
-      all: {
-        src: ['dist/<%= pkg.name %>.all.min.js'],
-        dest: 'dist/<%= pkg.name %>.all.min.js'
       },
     },
     qunit: {
