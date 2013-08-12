@@ -9,8 +9,7 @@
             if (force || !list.each) {
                 if (!list.slice){ list = _.slice.call(list); }
                 _.methods(list);
-                // allow direct dot-traversal into first element in list
-                if (list.length){ _.children(list[0], list); }
+                if (list.length){ _.children(list[0], list); }// proxy dot-traversal into first element
             }
             return list;
         },
@@ -58,6 +57,7 @@
             var node = e.target;// only wipe cache for 3rd party changes
             delete node[node._internal ? '_internal' : '_children'];
         },
+        unique: function(node, i, arr){ return arr.indexOf(node) === i; },
         fn: {
             each: function(fn) {
                 var self = this.forEach ? this : [this],
@@ -73,7 +73,7 @@
                     }
                 }
                 if (results && results[0]) {
-                    return results[0].matchesSelector ? _.list(results) :
+                    return results[0].matchesSelector ? _.list(results.filter(_.unique)) :
                            self.length === 1 ? results[0] :
                            results;
                 }
