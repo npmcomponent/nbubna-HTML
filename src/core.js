@@ -81,8 +81,11 @@
             },
             find: function(selector) {
                 var self = this.forEach ? this : [this];
-                for (var list=[],i=0,m=self.length; i<m; i++) {
-                    list = list.concat(_.slice.call(self[i].querySelectorAll(selector)));
+                for (var list=[], i=0, m=self.length; i<m; i++) {
+                    var nodes = self[i].querySelectorAll(selector);
+                    for (var j=0, l=nodes.length; j<l; j++) {
+                        list.push(nodes[j]);
+                    }
                 }
                 return _.list(list);
             },
