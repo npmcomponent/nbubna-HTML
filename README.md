@@ -67,12 +67,13 @@ Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], [`only()`][on
 * 2013-07-24 [v0.9.0][] (first public release)
 * 2013-07-25 [v0.9.1][] (full version as main)
 * 2013-07-29 [v0.9.2][] (AMD, Component support, HTML.ify())
-* 2013-08-09 [v1.0.0][] (event(), better each, bugfixes, build restructure)
+* 2013-08-13 [v0.9.3][] ([add main to package.json][2])
 
 [v0.9.0]: https://github.com/nbubna/HTML/tree/0.9.0
 [v0.9.1]: https://github.com/nbubna/HTML/tree/0.9.1
 [v0.9.2]: https://github.com/nbubna/HTML/tree/0.9.2
-[v1.0.0]: https://github.com/nbubna/HTML/tree/1.0.0
+[v0.9.3]: https://github.com/nbubna/HTML/tree/0.9.3
+[2]: https://github.com/nbubna/HTML/issues/2
 
 Thanks to Adrian Cooney for the inspiration and [starting point][voyeur] for this project.
 
