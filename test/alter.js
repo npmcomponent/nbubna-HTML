@@ -64,16 +64,4 @@
     ok(!HTML.body.doa.length, 'child property is empty array');
   });
 
-  test("keep active chain", function() {
-    var el = HTML.body.add('doomed');
-    ok(el, 'have element');
-    equal(el.remove(true), HTML.body, 'remove(true) returns parent');
-  });
-
-  test("keep chain for list", function() {
-    var list = HTML.body.add('doa*5');
-    ok(list && list.forEach, 'have array');
-    strictEqual(list.remove(true), HTML.body, 'remove returns parent(s)');
-  });
-
 }(HTML));
