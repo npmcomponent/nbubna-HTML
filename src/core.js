@@ -79,7 +79,7 @@
                     }
                 }
                 return !results[0] && results[0] !== false ? this :
-                    results[0].matchesSelector ? _.list(results.filter(_.unique)) :
+                    results[0].matches ? _.list(results.filter(_.unique)) :
                     //self.length === 1 ? results[0] :
                     results;
             },
@@ -100,7 +100,7 @@
                         self.slice(b, e || (b + 1) || undefined) :
                         self.filter(
                             typeof b === "function" ? b :
-                            function(el){ return el.matchesSelector(b); }
+                            function(el){ return el.matches(b); }
                         )
                 );
             }
@@ -144,10 +144,10 @@
     _.define(HTML, 'ify', function(o, force) {
         return !o || 'length' in o ? _.list(o||[], force) : _.node(o, force);
     });
-    // ensure matchesSelector availability
+    // ensure element.matches(selector) availability
     var Ep = Element.prototype,
         aS = 'atchesSelector';
-    _.define(Ep, 'm'+aS, Ep['webkitM'+aS] || Ep['mozM'+aS] || Ep['msM'+aS]);
+    _.define(Ep, 'matches', Ep['m'] || Ep['webkitM'+aS] || Ep['mozM'+aS] || Ep['msM'+aS]);
     // watch for changes in children
     if (Observer) {
         new Observer(function(list){ list.forEach(_.mutation); })

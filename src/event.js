@@ -1,7 +1,8 @@
-(function(document, HTML, _) {
+(function(document, HTML) {
     "use strict";
 
-    var event = _.fn.event = function() {
+    var _ = HTML._,
+    event = _.fn.event = function() {
         var args = _.slice.call(arguments),
             self = this,
             action,
@@ -81,12 +82,12 @@
     };
     event.closest = function(selector) {
         var el = this.target;
-        while (el && el.matchesSelector) {
-            if (el.matchesSelector(selector)) {
+        while (el && el.matches) {
+            if (el.matches(selector)) {
                 return _.node(el);
             }
             el = el.parentNode;
         }
     };
 
-})(document, HTML, HTML._);
+})(document, document.documentElement);
