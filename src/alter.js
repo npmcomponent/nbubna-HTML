@@ -58,4 +58,4 @@
         });
     };
 
-})(document, HTML._);
+})(document, document.documentElement._);
