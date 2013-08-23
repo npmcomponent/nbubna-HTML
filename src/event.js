@@ -1,6 +1,7 @@
-(function(document, HTML, _) {
+(function(document, HTML) {
     "use strict";
 
+    var _ = HTML._;
     var event = _.fn.event = function() {
         var args = _.slice.call(arguments),
             self = this,
@@ -89,4 +90,4 @@
         }
     };
 
-})(document, HTML, HTML._);
+})(document, document.documentElement);
