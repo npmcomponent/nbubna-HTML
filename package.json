@@ -2,7 +2,7 @@
   "name": "html.js",
   "title": "HTML",
   "description": "An intuitive, extensible way to work directly with the DOM.",
-  "version": "0.9.4",
+  "version": "0.10.0",
   "homepage": "http://nbubna.github.io/HTML/",
   "author": {
     "name": "ESHA Research",
@@ -48,7 +48,6 @@
     "traverse",
     "manipulate",
     "extend",
-    "event",
     "better",
     "query",
     "element",

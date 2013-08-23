@@ -2,7 +2,7 @@
   "name": "HTML",
   "repo": "nbubna/HTML",
   "description": "An intuitive, extensible way to work directly with the DOM.",
-  "version": "0.9.4",
+  "version": "0.10.0",
   "keywords": [
     "html",
     "voyeur",
@@ -14,7 +14,6 @@
     "befriend",
     "query",
     "element",
-    "event",
     "emmet",
     "native"
   ],

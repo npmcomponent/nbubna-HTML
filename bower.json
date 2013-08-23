@@ -1,6 +1,6 @@
 {
     "name": "HTML",
-    "version": "0.9.4",
+    "version": "0.10.0",
     "main": "dist/HTML.min.js",
     "description": "An intuitive, extensible way to work directly with the DOM.",
     "keywords": [
@@ -9,7 +9,6 @@
         "traverse",
         "append",
         "emmet",
-        "event",
         "befriend",
         "manipulate",
         "extend",
