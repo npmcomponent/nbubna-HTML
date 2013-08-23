@@ -15,9 +15,8 @@ Download: [HTML.min.js][full-min] or [HTML.js][full]
 [NPM][npm]: `npm install html.js`   
 [Component][component]: `component install nbubna/HTML`  
 
-Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][only], [`event()`][eventfn], [`add()`][add], [`remove()`][remove], [`HTML.ify()`][ify] and [emmet abbreviations][abbr] in [`add()`][add-emmet]:  
+Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][only], [`add()`][add], [`remove()`][remove], [`HTML.ify()`][ify] and [emmet abbreviations][abbr] in [`add()`][add-emmet]:  
 * [HTML.core.js][core]
-* [HTML.event.js][event]
 * [HTML.alter.js][alter]
 * [HTML.emmet.js][emmet]
 
@@ -31,7 +30,6 @@ Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][
 [base]: http://raw.github.com/nbubna/HTML/master/dist/HTML.base.js
 [core-min]: https://raw.github.com/nbubna/HTML/master/dist/HTML.core.min.js
 [core]: http://raw.github.com/nbubna/HTML/master/dist/HTML.core.js
-[event]: http://raw.github.com/nbubna/HTML/master/dist/HTML.event.js
 [alter]: http://raw.github.com/nbubna/HTML/master/dist/HTML.alter.js
 [emmet]: http://raw.github.com/nbubna/HTML/master/dist/HTML.emmet.js
 
@@ -39,7 +37,6 @@ Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][
 [query]: http://nbubna.github.io/HTML#query()
 [each]: http://nbubna.github.io/HTML#each()
 [only]: http://nbubna.github.io/HTML#only()
-[eventfn]: http://nbubna.github.io/HTML#event()
 [add]: http://nbubna.github.io/HTML#add()
 [add-emmet]: http://nbubna.github.io/HTML#add(emmet)
 [remove]: http://nbubna.github.io/HTML#remove()
@@ -50,9 +47,8 @@ Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][
 
 Download: [HTML.min.js][base-min]  or  [HTML.js][base]  
 
-Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][only], [`event()`][eventfn], [`add()`][add], [`remove()`][remove] and [`HTML.ify()`][ify]:
+Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][only], [`add()`][add], [`remove()`][remove] and [`HTML.ify()`][ify]:
 * [HTML.core.js][core]
-* [HTML.event.js][event]
 * [HTML.alter.js][alter]
 
 #### Core Version:
@@ -68,12 +64,17 @@ Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][
 * 2013-07-25 [v0.9.1][] (full version as main)
 * 2013-07-29 [v0.9.2][] (AMD, Component support, HTML.ify())
 * 2013-08-13 [v0.9.3][] ([add main to package.json][2])
+* 2013-08-23 [v0.10.0][] ([Component fixes][8], [s/find/query][7], [deprecate undocumented event()][1])
 
 [v0.9.0]: https://github.com/nbubna/HTML/tree/0.9.0
 [v0.9.1]: https://github.com/nbubna/HTML/tree/0.9.1
 [v0.9.2]: https://github.com/nbubna/HTML/tree/0.9.2
 [v0.9.3]: https://github.com/nbubna/HTML/tree/0.9.3
+[v0.10.0]: https://github.com/nbubna/HTML/tree/0.10.0
+[1]: https://github.com/nbubna/HTML/issues/1
 [2]: https://github.com/nbubna/HTML/issues/2
+[7]: https://github.com/nbubna/HTML/issues/7
+[8]: https://github.com/nbubna/HTML/issues/8
 
 Thanks to Adrian Cooney for the inspiration and [starting point][voyeur] for this project.
 
