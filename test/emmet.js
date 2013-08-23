@@ -34,25 +34,25 @@
 
 		equal(h1.tagName, "H1", "Tag created");
 		equal(h1.parentNode.tagName, "SECTION", "Tag within parent");
-		ok(HTML.find('section h1').nodeType, "only the last section got an h1 kid");
-		HTML.find('section.bro').remove();
+		ok(HTML.query('section h1').nodeType, "only the last section got an h1 kid");
+		HTML.query('section.bro').remove();
 	});
 
 	test("element id", function() {
 		ok(HTML.body.add('span#foo'), 'have element');
 		equal(HTML.body.span.id, 'foo', 'has right id');
-		HTML.find('#foo').remove();
+		HTML.query('#foo').remove();
 	});
 
 	test("element class", function() {
 		ok(HTML.body.add('div#classes.bar.woogie'), 'have element');
-		equal(HTML.find('#classes').getAttribute('class'), 'bar woogie', 'has right classes');
-		HTML.find('#classes').remove();
+		equal(HTML.query('#classes').getAttribute('class'), 'bar woogie', 'has right classes');
+		HTML.query('#classes').remove();
 	});
 
 	test("element attr", 4, function() {
 		ok(HTML.body.add('div#attrs[test foo=bar bar="woogie baz"]'), 'have element');
-		var el = HTML.find('#attrs');
+		var el = HTML.query('#attrs');
 		equal(el.getAttribute('test'), '', 'has empty test attr');
 		equal(el.getAttribute('foo'), 'bar', 'foo attr is bar');
 		equal(el.getAttribute('bar'), 'woogie baz', 'bar attr is "woogie baz"');
@@ -81,7 +81,7 @@
 	test("text", function() {
 		var text = HTML.body.add('p#text{hello world!}');
 		ok(text, 'have element');
-		equal(HTML.find('#text').textContent, 'hello world!', 'has right text');
+		equal(HTML.query('#text').textContent, 'hello world!', 'has right text');
 		text.remove();
 		var mixed = HTML.body.add('p#mixed{a}>span+{ b}');
 		equal(mixed.textContent, 'a b', 'both text parts');

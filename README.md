@@ -15,7 +15,7 @@ Download: [HTML.min.js][full-min] or [HTML.js][full]
 [NPM][npm]: `npm install html.js`   
 [Component][component]: `component install nbubna/HTML`  
 
-Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], [`only()`][only], [`event()`][eventfn], [`add()`][add], [`remove()`][remove], [`HTML.ify()`][ify] and [emmet abbreviations][abbr] in [`add()`][add-emmet]:  
+Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][only], [`event()`][eventfn], [`add()`][add], [`remove()`][remove], [`HTML.ify()`][ify] and [emmet abbreviations][abbr] in [`add()`][add-emmet]:  
 * [HTML.core.js][core]
 * [HTML.event.js][event]
 * [HTML.alter.js][alter]
@@ -36,7 +36,7 @@ Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], [`only()`][on
 [emmet]: http://raw.github.com/nbubna/HTML/master/dist/HTML.emmet.js
 
 [dot]: http://nbubna.github.io/HTML#dot-traversal
-[find]: http://nbubna.github.io/HTML#find()
+[query]: http://nbubna.github.io/HTML#query()
 [each]: http://nbubna.github.io/HTML#each()
 [only]: http://nbubna.github.io/HTML#only()
 [eventfn]: http://nbubna.github.io/HTML#event()
@@ -50,7 +50,7 @@ Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], [`only()`][on
 
 Download: [HTML.min.js][base-min]  or  [HTML.js][base]  
 
-Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], [`only()`][only], [`event()`][eventfn], [`add()`][add], [`remove()`][remove] and [`HTML.ify()`][ify]:
+Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][only], [`event()`][eventfn], [`add()`][add], [`remove()`][remove] and [`HTML.ify()`][ify]:
 * [HTML.core.js][core]
 * [HTML.event.js][event]
 * [HTML.alter.js][alter]
@@ -59,7 +59,7 @@ Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], [`only()`][on
 
 Download: [HTML.min.js][core-min]  or  [HTML.js][core]  
 
-Includes [dot-traversal][dot], [`find()`][find], [`each()`][each], [`only()`][only] and [`HTML.ify()`][ify]:
+Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][only] and [`HTML.ify()`][ify]:
 * [HTML.core.js][core]
 
 

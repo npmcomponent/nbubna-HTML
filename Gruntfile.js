@@ -29,10 +29,6 @@ module.exports = function(grunt) {
         src: ['src/alter.js'],
         dest: 'dist/<%= pkg.name %>.alter.js'
       },
-      event: {
-        src: ['src/event.js'],
-        dest: 'dist/<%= pkg.name %>.event.js'
-      },
       emmet: {
         src: 'src/emmet.js',
         dest: 'dist/<%= pkg.name %>.emmet.js'

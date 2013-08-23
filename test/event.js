@@ -154,10 +154,10 @@ Test assertions:
 
 	test('basic', 2, function() {
 		HTML.event('click', 'section', function(e) {
-            ok(this.matchesSelector('section'), 'this should be section, not html');
+            ok(this.matches('section'), 'this should be section, not html');
             strictEqual(this, e.closest('section'), 'should be the closest section to target');
         });
-        click(HTML.find('section *').only(0));
+        click(HTML.query('section *').only(0));
         HTML.event(0);
 	});
 
@@ -166,21 +166,21 @@ Test assertions:
     test('noargs, delegation', 3, function() {
         HTML.body.insertAdjacentHTML('beforeend', '<a id="remove"></a>');
         HTML.event('click', 'a', 'remove');
-        var el = HTML.find('#remove');
+        var el = HTML.query('#remove');
         ok(el && el.parentNode, 'have removable element');
         click(el);
         ok(!el.parentNode, 'element lost its parent');
-        strictEqual(HTML.find('#remove').length, 0, 'no more #remove');
+        strictEqual(HTML.query('#remove').length, 0, 'no more #remove');
         HTML.event(0);
     });
 
 	test('args', 3, function() {
         HTML.body.event('click', 'classList.toggle', ['active']);
-        ok(!HTML.body.matchesSelector('.active'), 'starts inactive');
+        ok(!HTML.body.matches('.active'), 'starts inactive');
         click(HTML.body.section);
-        ok(HTML.body.matchesSelector('.active'), 'should be active');
-        click(HTML.find('section *').only(0));
-        ok(!HTML.body.matchesSelector('.active'), 'should not be active');
+        ok(HTML.body.matches('.active'), 'should be active');
+        click(HTML.query('section *').only(0));
+        ok(!HTML.body.matches('.active'), 'should not be active');
 		HTML.body.event(0);
 	});
 

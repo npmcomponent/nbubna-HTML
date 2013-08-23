@@ -39,7 +39,7 @@
 	test("add list", function() {
 		var list = ['nav', document.createElement('nav'), ['nav']];
 		equal(HTML.body.add(list).length, 3, 'added three nav elements');
-		HTML.find('nav').remove();
+		HTML.query('nav').remove();
 	});
 
   //TODO: test add(el, ref);

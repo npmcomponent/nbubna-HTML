@@ -1,11 +1,11 @@
-/*! HTML - v0.9.2 - 2013-08-12
+/*! HTML - v0.9.4 - 2013-08-23
 * http://nbubna.github.io/HTML/
 * Copyright (c) 2013 ESHA Research; Licensed MIT, GPL */
 (function(window, document, Observer) {
     "use strict";
 
     var _ = {
-        version: "0.9.2",
+        version: "0.9.4",
         slice: Array.prototype.slice,
         list: function(list, force) {
             if (list.length === 1){ return _.node(list[0], force); }
@@ -82,11 +82,15 @@
                     }
                 }
                 return !results[0] && results[0] !== false ? this :
-                    results[0].matchesSelector ? _.list(results.filter(_.unique)) :
+                    results[0].matches ? _.list(results.filter(_.unique)) :
                     //self.length === 1 ? results[0] :
                     results;
             },
-            find: function(selector) {
+            find: function() {
+                try{ window.console.warn('find() is deprecated. Please use query().'); }
+                finally{ return this.query.apply(this, arguments); }
+            },
+            query: function(selector) {
                 var self = this.forEach ? this : [this];
                 for (var list=[], i=0, m=self.length; i<m; i++) {
                     var nodes = self[i].querySelectorAll(selector);
@@ -103,7 +107,7 @@
                         self.slice(b, e || (b + 1) || undefined) :
                         self.filter(
                             typeof b === "function" ? b :
-                            function(el){ return el.matchesSelector(b); }
+                            function(el){ return el.matches(b); }
                         )
                 );
             }
@@ -147,10 +151,10 @@
     _.define(HTML, 'ify', function(o, force) {
         return !o || 'length' in o ? _.list(o||[], force) : _.node(o, force);
     });
-    // ensure matchesSelector availability
+    // ensure element.matches(selector) availability
     var Ep = Element.prototype,
         aS = 'atchesSelector';
-    _.define(Ep, 'm'+aS, Ep['webkitM'+aS] || Ep['mozM'+aS] || Ep['msM'+aS]);
+    _.define(Ep, 'matches', Ep['m'] || Ep['webkitM'+aS] || Ep['mozM'+aS] || Ep['msM'+aS]);
     // watch for changes in children
     if (Observer) {
         new Observer(function(list){ list.forEach(_.mutation); })

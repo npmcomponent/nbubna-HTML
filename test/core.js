@@ -123,7 +123,7 @@ Test assertions:
 	});
 
 	test("property function", 8, function() {
-		var ends = HTML.find('#first,#last'),
+		var ends = HTML.query('#first,#last'),
 			clones = ends.each('cloneNode');
 		notEqual(ends, clones, 'should not return self');
 		ok(clones.each, 'clone list is HTML-ified');
@@ -160,7 +160,7 @@ Test assertions:
 	});
 
 	test("nested property set", function() {
-		var first = HTML.find('#first');
+		var first = HTML.query('#first');
 		first.each('parentNode.id', 'momma');
 		strictEqual(HTML.body.section.id, 'momma');
 	});
@@ -228,7 +228,7 @@ Test assertions:
 	});
 
 	test("non-chaining each function on element", function() {
-		var div = HTML.find('#identity'),
+		var div = HTML.query('#identity'),
 			result = div.each(function(div) {
 				return 'Id is: '+div.id;
 			});
@@ -264,7 +264,7 @@ Test assertions:
 
 	test("by selector, on multiple", function() {
 		var divs = HTML.body.section.div;
-		strictEqual(divs.only('#first'), HTML.find('#first'), 'got #first');
+		strictEqual(divs.only('#first'), HTML.query('#first'), 'got #first');
 	});
 
 	test("by function, on multiple", function() {
@@ -276,25 +276,25 @@ Test assertions:
 	module("search");
 
 	test("find multiple, get array", function() {
-		ok(HTML.find("div") instanceof Array, "should be an array");
+		ok(HTML.query("div") instanceof Array, "should be an array");
 	});
 
 	test("find one, get HTMLElement", function() {
-		ok(HTML.find("#identity") instanceof HTMLElement, "should be an element");
+		ok(HTML.query("#identity") instanceof HTMLElement, "should be an element");
 	});
 
 	test("find nonexistent, get empty array", function() {
-		ok(!HTML.find("#idontexist").length, "empty array");
+		ok(!HTML.query("#idontexist").length, "empty array");
 	});
 
 	test("contextual search", function() {
-		strictEqual(HTML.body.section.find("div").length, 5, "should be five divs, not seven");
+		strictEqual(HTML.body.section.query("div").length, 5, "should be five divs, not seven");
 	});
 
 	test("traverse on result", function() {
 		ok(HTML);
-		ok(HTML.find('section'));
-		ok(HTML.find("section").div, "should be present");
+		ok(HTML.query('section'));
+		ok(HTML.query("section").div, "should be present");
 	});
 
 }(HTML));
