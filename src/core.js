@@ -83,7 +83,11 @@
                     //self.length === 1 ? results[0] :
                     results;
             },
-            find: function(selector) {
+            find: function() {
+                try{ window.console.warn('find() is deprecated. Please use query().'); }
+                finally{ return this.query.apply(this, arguments); }
+            },
+            query: function(selector) {
                 var self = this.forEach ? this : [this];
                 for (var list=[], i=0, m=self.length; i<m; i++) {
                     var nodes = self[i].querySelectorAll(selector);

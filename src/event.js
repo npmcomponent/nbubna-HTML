@@ -3,6 +3,7 @@
 
     var _ = HTML._,
     event = _.fn.event = function() {
+        try{ window.console.warn('event() is deprecated. https://github.com/nbubna/HTML/issues/1'); } catch(e){}
         var args = _.slice.call(arguments),
             self = this,
             action,
