@@ -1,2 +1,2 @@
 
-module.exports = require('../dist/HTML.all.js');
+module.exports = require('../dist/HTML.js');
