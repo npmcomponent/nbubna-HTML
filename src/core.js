@@ -165,7 +165,7 @@
     } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = HTML;
     } else {
-        window.HTML = HTML;
+        window[HTML.getAttribute('data-html-reference')||'HTML'] = HTML;
     }
     // eventual consistency
     document.addEventListener("DOMContentLoaded", function(){ _.node(HTML, true); });
