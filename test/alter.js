@@ -46,10 +46,10 @@
 
   module("HTML element removal");
 
-  test("single", 4, function() {
+  test("single", 3, function() {
     var el = HTML.body.add('doomed');
     ok(el, 'have element');
-    equal(el.remove(), el, 'remove returns self');
+    el.remove();
     ok(!el.parentNode, 'no parent after removal');
     ok(!HTML.body.doomed.length, 'child property is empty array');
   });
