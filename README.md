@@ -65,12 +65,14 @@ Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][
 * 2013-07-29 [v0.9.2][] (AMD, Component support, HTML.ify())
 * 2013-08-13 [v0.9.3][] ([add main to package.json][2])
 * 2013-08-23 [v0.10.0][] ([Component fixes][8], [s/find/query][7], [deprecate undocumented event()][1])
+* 2013-08-25 [v0.10.2][] (data-html-reference and test/alter.js fix)
 
 [v0.9.0]: https://github.com/nbubna/HTML/tree/0.9.0
 [v0.9.1]: https://github.com/nbubna/HTML/tree/0.9.1
 [v0.9.2]: https://github.com/nbubna/HTML/tree/0.9.2
 [v0.9.3]: https://github.com/nbubna/HTML/tree/0.9.3
 [v0.10.0]: https://github.com/nbubna/HTML/tree/0.10.0
+[v0.10.2]: https://github.com/nbubna/HTML/tree/0.10.2
 [1]: https://github.com/nbubna/HTML/issues/1
 [2]: https://github.com/nbubna/HTML/issues/2
 [7]: https://github.com/nbubna/HTML/issues/7
