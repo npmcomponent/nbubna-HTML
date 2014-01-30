@@ -81,3 +81,7 @@ Includes [dot-traversal][dot], [`query()`][query], [`each()`][each], [`only()`][
 Thanks to Adrian Cooney for the inspiration and [starting point][voyeur] for this project.
 
 [voyeur]: http://dunxrion.github.io/voyeur.js
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/nbubna/html/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
