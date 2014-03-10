@@ -1,6 +1,6 @@
 {
     "name": "HTML",
-    "version": "0.10.2",
+    "version": "0.11.0",
     "main": "dist/HTML.min.js",
     "description": "An intuitive, extensible way to work directly with the DOM.",
     "keywords": [
@@ -40,6 +40,10 @@
     "ignore": [
         "**/.*",
         "node_modules",
-        "components"
+        "components",
+        "libs",
+        "test",
+        "src",
+        "Gruntfile.js"
     ]
 }
