@@ -283,6 +283,18 @@ Test assertions:
 		ok(HTML.query("#identity") instanceof HTMLElement, "should be an element");
 	});
 
+	test("find until count", function() {
+		ok(HTML.query('section div[id]', 1) instanceof HTMLElement, "should be a single element");
+
+		var lessThanAvailable = HTML.query('section div[id]', 2);
+		ok(lessThanAvailable instanceof Array, 'should be an array');
+		equal(lessThanAvailable.length, 2, 'should have only two');
+
+		var moreThanAvailable = HTML.query('section div[id]', 5);
+		ok(moreThanAvailable instanceof Array, 'should be an array');
+		equal(moreThanAvailable.length, 3, 'should only find three');
+	});
+
 	test("find nonexistent, get empty array", function() {
 		ok(!HTML.query("#idontexist").length, "empty array");
 	});

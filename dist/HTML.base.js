@@ -1,6 +1,6 @@
-/*! HTML - v0.10.2 - 2013-08-25
+/*! HTML - v0.10.2 - 2014-03-10
 * http://nbubna.github.io/HTML/
-* Copyright (c) 2013 ESHA Research; Licensed MIT, GPL */
+* Copyright (c) 2014 ESHA Research; Licensed MIT, GPL */
 (function(window, document, Observer) {
     "use strict";
 
@@ -90,12 +90,19 @@
                 try{ window.console.warn('find() is deprecated. Please use query().'); }
                 finally{ return this.query.apply(this, arguments); }
             },
-            query: function(selector) {
+            query: function(selector, count) {
                 var self = this.forEach ? this : [this];
                 for (var list=[], i=0, m=self.length; i<m; i++) {
-                    var nodes = self[i].querySelectorAll(selector);
-                    for (var j=0, l=nodes.length; j<l; j++) {
-                        list.push(nodes[j]);
+                    if (count === list.length + 1) {
+                        var node = self[i].querySelector(selector);
+                        if (node) {
+                            list.push(node);
+                        }
+                    } else {
+                        var nodes = self[i].querySelectorAll(selector);
+                        for (var j=0, l=nodes.length; j<l && (!count || list.length < count); j++) {
+                            list.push(nodes[j]);
+                        }
                     }
                 }
                 return _.list(list);

@@ -87,12 +87,17 @@
                 try{ window.console.warn('find() is deprecated. Please use query().'); }
                 finally{ return this.query.apply(this, arguments); }
             },
-            query: function(selector) {
+            query: function(selector, count) {
                 var self = this.forEach ? this : [this];
-                for (var list=[], i=0, m=self.length; i<m; i++) {
-                    var nodes = self[i].querySelectorAll(selector);
-                    for (var j=0, l=nodes.length; j<l; j++) {
-                        list.push(nodes[j]);
+                for (var list=[], i=0, m=self.length; i<m && (!count || list.length < count); i++) {
+                    if (count === list.length + 1) {
+                        var node = self[i].querySelector(selector);
+                        if (node){ list.push(node); }
+                    } else {
+                        var nodes = self[i].querySelectorAll(selector);
+                        for (var j=0, l=nodes.length; j<l && (!count || list.length < count); j++) {
+                            list.push(nodes[j]);
+                        }
                     }
                 }
                 return _.list(list);
