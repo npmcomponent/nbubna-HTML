@@ -92,12 +92,10 @@
             },
             query: function(selector, count) {
                 var self = this.forEach ? this : [this];
-                for (var list=[], i=0, m=self.length; i<m; i++) {
+                for (var list=[], i=0, m=self.length; i<m && (!count || list.length < count); i++) {
                     if (count === list.length + 1) {
                         var node = self[i].querySelector(selector);
-                        if (node) {
-                            list.push(node);
-                        }
+                        if (node){ list.push(node); }
                     } else {
                         var nodes = self[i].querySelectorAll(selector);
                         for (var j=0, l=nodes.length; j<l && (!count || list.length < count); j++) {
@@ -249,7 +247,6 @@
 
     var _ = HTML._,
     event = _.fn.event = function() {
-        try{ window.console.warn('event() is deprecated. https://github.com/nbubna/HTML/issues/1'); } catch(e){}
         var args = _.slice.call(arguments),
             self = this,
             action,

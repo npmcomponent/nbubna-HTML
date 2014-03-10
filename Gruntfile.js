@@ -42,9 +42,12 @@ module.exports = function(grunt) {
       dist: {
         src: ['src/core.js',
               'src/alter.js',
-              'src/event.js',
               'src/emmet.js'],
         dest: 'dist/<%= pkg.name %>.js'
+      },
+      event: {
+        src: ['src/event.js'],
+        dest: 'dist/<%= pkg.name %>.event.js'
       },
       stringify: {
         src: ['src/stringify.js'],
@@ -68,6 +71,10 @@ module.exports = function(grunt) {
         src: ['dist/<%= pkg.name %>.js'],
         dest: 'dist/<%= pkg.name %>.min.js'
       },
+      event: {
+        src: ['dist/<%= pkg.name %>.event.js'],
+        dest: 'dist/<%= pkg.name %>.event.min.js'
+      }
     },
     compress: {
       options: {
@@ -85,6 +92,10 @@ module.exports = function(grunt) {
         src: ['dist/<%= pkg.name %>.min.js'],
         dest: 'dist/<%= pkg.name %>.min.js'
       },
+      event: {
+        src: ['dist/<%= pkg.name %>.event.min.js'],
+        dest: 'dist/<%= pkg.name %>.event.min.js'
+      }
     },
     qunit: {
       files: ['test/**/*.html']
