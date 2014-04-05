@@ -1,4 +1,4 @@
-/*! HTML - v0.11.0 - 2014-03-10
+/*! HTML - v0.11.1 - 2014-04-05
 * http://nbubna.github.io/HTML/
 * Copyright (c) 2014 ESHA Research; Licensed MIT, GPL */
 (function(document, _) {
@@ -6,7 +6,7 @@
 
     var add = _.fn.add;
     add.create = function(node, code, ref) {
-        var parts = code.split(add.emmetRE()),
+        var parts = code.match(add.emmetRE()).filter(Boolean),
             root = document.createDocumentFragment(),
             el = document.createElement(parts[0]);
         root.appendChild(el);
@@ -18,8 +18,9 @@
         return el;
     };
     add.emmetRE = function() {
-        var chars = '\\'+Object.keys(add.emmet).join('|\\');
-        return new RegExp('(?='+chars+')','g');
+        var m = Object.keys(add.emmet).join('');
+        var regex = '[a-z'+m+']{0,1}(?:"[^"]*"|[^"'+m+']){0,}';
+        return new RegExp(regex, 'g');
     };
     add.emmet = {
         '#': function(id) {
@@ -28,7 +29,9 @@
         '.': function(cls) {
             var list = this.getAttribute('class') || '';
             list = list + (list ? ' ' : '') + cls;
-            this.setAttribute('class', list);
+            if (list.length) {
+                this.setAttribute('class', list);
+            }
         },
         '[': function(attrs) {
             attrs = attrs.substr(0, attrs.length-1).match(/(?:[^\s"]+|"[^"]*")+/g);
