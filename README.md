@@ -10,7 +10,7 @@ Please check out the [demo][demo], the [API][api] and the [F.A.Q.][faq].
 
 #### Full Version:
 
-Download: [HTML.min.js][full-min] or [HTML.js][full]  
+Download: [HTML.min.js][full-min] or [HTML.js][full] [![Build Status](https://travis-ci.org/nbubna/HTML.png?branch=master)](https://travis-ci.org/nbubna/HTML)  
 [Bower][bower]: `bower install HTML`  
 [NPM][npm]: `npm install html.js`   
 [Component][component]: `component install nbubna/HTML`  
