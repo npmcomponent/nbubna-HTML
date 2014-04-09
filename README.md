@@ -1,3 +1,4 @@
+*This repository is a mirror of the [component](http://component.io) module [nbubna/html](http://github.com/nbubna/html). It has been modified to work with NPM+Browserify. You can install it using the command `npm install npmcomponent/nbubna-html`. Please do not open issues or send pull requests against this repo. If you have issues with this repo, report it to [npmcomponent](https://github.com/airportyh/npmcomponent).*
 [HTML][home] is a small, [extensible][fn] library to help you enjoy the DOM in a simple, direct way.
 
 Please check out the [demo][demo], the [API][api] and the [F.A.Q.][faq].
